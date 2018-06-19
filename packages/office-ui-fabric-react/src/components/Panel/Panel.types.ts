@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Panel } from './Panel';
-import { IRenderFunction } from '../../Utilities';
+import { IStyle } from '../../Styling';
+import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { ILayerProps } from '../../Layer';
 import { IFocusTrapZoneProps } from '../../FocusTrapZone';
 
@@ -174,6 +175,11 @@ export interface IPanelProps extends React.Props<Panel> {
    * @deprecated
    */
   componentId?: string;
+
+  /**
+   * Styles for the panel.
+   */
+  styles?: IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>;
 }
 
 /**
@@ -278,3 +284,12 @@ export enum PanelType {
    */
   custom = 7
 }
+
+export interface IPanelStyles {
+  /**
+   * Styles for the root element.
+   */
+  root: IStyle;
+}
+
+export type IPanelStyleProps = Pick<IPanelProps, 'className' | 'type'>;

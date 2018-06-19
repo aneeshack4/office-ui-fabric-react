@@ -1,32 +1,20 @@
-import * as React from 'react';
-import {
-  classNamesFunction,
-  customizable,
-} from '../../Utilities';
-import { IPanelProps } from './Panel.types';
+// import * as React from 'react';
+// import { BaseComponent, divProperties, getNativeProps, customizable } from '../../Utilities';
+// import { classNamesFunction } from '../../Utilities';
+// import { IPanelProps, IPanelStyleProps, IPanelStyles } from './Panel.types';
 
-const getClassNames = classNameFunction<IPanelStyleProps, IPanelStyles>();
-
-/**
- * Panel with no default styles.
- * [Use the `getStyles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
- */
-@customizable('Panel', ['theme'])
-export class ComponentName extends React.Component<...> {
-  public render() {
-    const {
-      className,
-      getStyles,
-      theme,
-    } = this.props;
-    const classNames = getClassNames(getStyles, {
-      theme: theme!,
-      className,
-      // Other props from IPanelStyleProps
-    });
-
-    return (
-      <div className={ classNames.root }>Hello</div>;
-    );
-  }
-}
+// const getClassNames = classNamesFunction<IPanelStyleProps, IPanelStyles>();
+// @customizable('Panel', ['styles'])
+// export class PanelBase extends BaseComponent<IPanelProps, {}> {
+//   public render(): JSX.Element {
+//     const { as: RootType = 'label', children, className, styles } = this.props;
+//     const classNames = getClassNames(styles, {
+//       className
+//     });
+//     return (
+//       <RootType {...getNativeProps(this.props, divProperties)} className={classNames.root}>
+//         {children}
+//       </RootType>
+//     );
+//   }
+// }
