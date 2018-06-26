@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "MessageBar: remove role property from multiline root div",
+      "comment": "Fix import paths to use relative paths for office-ui-fabric-react",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kakje@microsoft.com"
+  "email": "edwl@microsoft.com"
 }
