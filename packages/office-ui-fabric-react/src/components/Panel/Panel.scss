@@ -38,7 +38,6 @@ $CommandBarHeight: 44px;
   right: 0;
   bottom: 0;
 
-
   // Overlay used within panel
   .overlay {
     pointer-events: none;
@@ -68,7 +67,7 @@ $CommandBarHeight: 44px;
     border-right: 1px solid $ms-color-neutralLight;
     pointer-events: auto;
     width: $Panel-width-sm;
-    @include ms-drop-shadow(-30px, 0px, 30px, -30px, .2);
+    @include ms-drop-shadow(-30px, 0px, 30px, -30px, 0.2);
     @include ms-left(auto);
   }
 }
@@ -92,7 +91,7 @@ $CommandBarHeight: 44px;
     @include ms-right(auto);
     @include ms-left(0);
     width: $Panel-width-xs;
-    @include ms-drop-shadow(30px, 0px, 30px, -30px, .2);
+    @include ms-drop-shadow(30px, 0px, 30px, -30px, 0.2);
   }
 }
 
@@ -215,7 +214,9 @@ $CommandBarHeight: 44px;
   transform: translateZ(0);
 }
 
-.header, .content, .footerInner {
+.header,
+.content,
+.footerInner {
   padding-left: 16px;
   padding-right: 16px;
 

@@ -292,4 +292,8 @@ export interface IPanelStyles {
   root: IStyle;
 }
 
-export type IPanelStyleProps = Pick<IPanelProps, 'className' | 'type'>;
+export type IPanelStyleProps = Pick<IPanelProps, 'className' | 'type'> & {
+  /** Whether the panel is in an open state. */
+  isOpen: boolean;
+  smallFluid: boolean;
+};

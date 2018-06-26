@@ -7,6 +7,7 @@ import {
   divProperties,
   getId,
   getNativeProps,
+  IClassNames,
   getRTL,
   createRef
 } from '../../Utilities';
@@ -26,6 +27,7 @@ const getClassNames = classNamesFunction<IPanelStyleProps, IPanelStyles>();
 export interface IPanelState {
   isFooterSticky?: boolean;
   isOpen?: boolean;
+  smallFluid?: boolean;
   isAnimating?: boolean;
   id?: string;
 }
@@ -34,12 +36,14 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   public static defaultProps: IPanelProps = {
     isHiddenOnDismiss: false,
     isOpen: false,
+    //smallFluid: false,
     isBlocking: true,
     hasCloseButton: true,
     type: PanelType.smallFixedFar
   };
 
   private _content = createRef<HTMLDivElement>();
+  private _classNames: IClassNames<IPanelStyles>;
 
   constructor(props: IPanelProps) {
     super(props);
@@ -98,6 +102,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       onRenderBody = this._onRenderBody,
       onRenderFooter = this._onRenderFooter
     } = this.props;
+
     const { isOpen, isAnimating, id } = this.state;
     const isLeft = type === PanelType.smallFixedNear ? true : false;
     const isRTL = getRTL();
@@ -105,6 +110,8 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     const headerTextId = headerText && id + '-headerText';
     const customWidthStyles = type === PanelType.custom ? { width: customWidth } : {};
     const nativeProps = getNativeProps(this.props, divProperties);
+
+    //this._classNames = getClassNames(styles, { className, isOpen, smallFluid });
 
     if (!isOpen && !isAnimating && !isHiddenOnDismiss) {
       return null;

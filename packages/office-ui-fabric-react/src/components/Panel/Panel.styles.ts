@@ -1,6 +1,6 @@
 import { IPanelStyles, IPanelStyleProps, PanelType } from './Panel.types';
 import { IStyleFunction } from '../../Utilities';
-import { ScreenWidthMinMedium } from '../../Styling';
+//import { ScreenWidthMinMedium, AnimationClassNames } from '../../Styling';
 
 // Panel styles
 
@@ -14,7 +14,7 @@ import { ScreenWidthMinMedium } from '../../Styling';
 // $CommandBarHeight: 44px;
 
 export const getStyles: IStyleFunction<IPanelStyleProps, IPanelStyles> = props => {
-  const { type, className } = props;
+  const { type, className, isOpen, smallFluid } = props;
   return {
     root: [
       'ms-Panel',
@@ -26,24 +26,43 @@ export const getStyles: IStyleFunction<IPanelStyleProps, IPanelStyles> = props =
         right: 0,
         bottom: 0
       },
-      type === PanelType.largeFixed && {
-        selectors: {
-          [`@media (min-width: ${ScreenWidthMinMedium})`]: {
-            width: '$Panel-width-sm'
-          }
+      // type === PanelType.largeFixed && {
+      //   selectors: {
+      //     [`@media (min-width: ${ScreenWidthMinMedium})`]: {
+      //       width: '$Panel-width-sm'
+      //     }
+      //   }
+      // },
+      className,
+      isOpen && [
+        'is-open',
+        {
+          pointerEvents: 'auto',
+          cursor: 'pointer',
+          opacity: 0
         }
-      },
-      className
+      ],
+      smallFluid && ['ms-Panel--smFluid', {}]
     ],
     overlay: [
       // Overlay used within panel
       'overlay',
       {
-        pointerEvents: 'none',
         opacity: 1,
         cursor: 'pointer',
         transition: 'opacity $ms-animation-duration-3 $ms-animation-ease-1'
-      }
+      },
+      isOpen
+        ? {
+            pointerEvents: 'auto',
+            selectors: {
+              [`@media screen and (-ms-high-contrast: active)`]: {
+                opacity: 0
+              }
+            }
+          }
+        : { pointerEvents: 'none' }
+      //isOpen && isAnimating && AnimationClassNames.fadeIn200
     ],
     isSmall: [
       'ms-Panel--sm',
@@ -185,9 +204,29 @@ export const getStyles: IStyleFunction<IPanelStyleProps, IPanelStyles> = props =
     rootContent: [
       'ms-Panel-content',
       {
-        marginBottom: '0',
+        marginBottom: 0,
         paddingBottom: '20px',
         overflowY: 'auto'
+      }
+    ],
+    // rootContentGrow: [
+    //   flexGrow: 1,
+    // ]
+    rootFootInner: [
+      'ms-Panel-footerInner',
+      {
+        paddingBottom: '20px',
+        paddingTop: '20px'
+      }
+    ],
+    // rootFooterIsSticky: []
+    rootHeaderText: [
+      'ms-Panel-headerText',
+      {
+        //@include ms-font-xl;
+        color: '$ms-color-neutralPrimary',
+        lineHeight: '32px',
+        margin: 0
       }
     ]
   };
