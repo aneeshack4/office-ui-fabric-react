@@ -1,6 +1,17 @@
 import { IPanelStyles, IPanelStyleProps, PanelType } from './Panel.types';
 import { IStyleFunction } from '../../Utilities';
-import { IStyle, ScreenWidthMinMedium } from '../../Styling';
+import { ScreenWidthMinMedium } from '../../Styling';
+
+// Panel styles
+
+// $Panel-width-xs: 272px;
+// $Panel-width-sm: 340px;
+// $Panel-width-md: 643px;
+// $Panel-width-lg: 940px;
+// $Panel-margin-md: 48px;
+// $Panel-margin-lg: 428px;
+// $Panel-margin-xl: 176px;
+// $CommandBarHeight: 44px;
 
 export const getStyles: IStyleFunction<IPanelStyleProps, IPanelStyles> = props => {
   const { type, className } = props;
@@ -121,15 +132,63 @@ export const getStyles: IStyleFunction<IPanelStyleProps, IPanelStyles> = props =
         cursor: 'pointer',
         opacity: 0
       }
+    ],
+    rootNavigation: [
+      'ms-Panel-navigation',
+      {
+        padding: '0 5px',
+        //height: ${CommandBarHeight},
+        display: 'flex',
+        justifyContent: 'flex-end'
+      }
+    ],
+    rootContentInner: [
+      'ms-Panel-contentInner',
+      {
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        overflowY: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+        webkitOverflowScrolling: 'touch'
+        //transform: translateZ(0);
+      }
+    ],
+    rootHasCloseButton: [
+      'ms-Panel--hasCloseButton',
+      {
+        //top: $CommandBarHeight
+      }
+    ],
+    rootHeader: [
+      'ms-Panel-header',
+      {
+        margin: '14px 0',
+        // Ensure that title doesn't shrink if screen is too small
+        flexGrow: 0,
+        [`@media (min-width: $ms-screen-min-xl)`]: {
+          marginTop: '30px'
+        }
+      }
+    ],
+    rootFooter: [
+      'ms-Panel-footer',
+      {
+        flexGrow: 0,
+        borderTop: '1px solid transparent',
+        transition: 'border $ms-animation-duration-3 $ms-animation-ease-2'
+      }
+    ],
+    rootContent: [
+      'ms-Panel-content',
+      {
+        marginBottom: '0',
+        paddingBottom: '20px',
+        overflowY: 'auto'
+      }
     ]
-    // rootNavigation: [
-    //   'ms-Panel-navigation',
-    //   {
-    //     padding: '0 5px',
-    //     height: ${CommandBarHeight},
-    //     display: 'flex',
-    //     justifyContent: 'flex-end'
-    //   }
-    // ]
   };
 };
