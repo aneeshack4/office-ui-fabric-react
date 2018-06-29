@@ -10,7 +10,8 @@ export class ButtonContextualMenuExample extends React.Component<IButtonProps, {
         <div>
           <DefaultButton
             data-automation-id="test"
-            disabled={disabled}
+            disabled={true}
+            allowDisabledFocus={true}
             checked={checked}
             iconProps={{ iconName: 'Add' }}
             text="New"

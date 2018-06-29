@@ -202,9 +202,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     if (this._isSplitButton) {
       return this._onRenderSplitButtonContent(tag, buttonProps);
     } else if (this.props.menuProps) {
-      assign(buttonProps, {
-        onKeyDown: this._onMenuKeyDown,
-        onClick: this._onMenuClick,
+      assign(menuProps, {
         'aria-expanded': this._isExpanded,
         'aria-owns': this.state.menuProps ? this._labelId + '-menu' : null,
         'aria-haspopup': true
@@ -594,11 +592,21 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
     // explicity cancelling event so click won't fire after this
-    if (this.props.disabled && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
-      ev.preventDefault();
-      ev.stopPropagation();
-    } else if (!this.props.disabled && this.props.onKeyDown !== undefined) {
-      this.props.onKeyDown(ev); // not cancelling event because it's not disabled
+    if (this.props.menuProps) {
+      // handle buttons with menuProps first
+      if (this.props.disabled && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
+        ev.preventDefault();
+        ev.stopPropagation();
+      } else if (!this.props.disabled) {
+        this._onMenuKeyDown(ev); // not cancelling event because it's not disabled
+      }
+    } else {
+      if (this.props.disabled && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
+        ev.preventDefault();
+        ev.stopPropagation();
+      } else if (!this.props.disabled && this.props.onKeyDown !== undefined) {
+        this.props.onKeyDown(ev); // not cancelling event because it's not disabled
+      }
     }
   };
 
@@ -627,8 +635,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   };
 
   private _onClick = (ev: React.MouseEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
-    if (!this.props.disabled && this.props.onClick !== undefined) {
-      this.props.onClick(ev); // not cancelling event because it's not disabled
+    if (!this.props.disabled && this.props.menuProps && this.props.onMenuClick !== undefined) {
+      this.props.onMenuClick(ev);
+    } else if (!this.props.disabled && this.props.onMouseDown !== undefined) {
+      this.props.onMouseDown(ev);
     }
   };
 
