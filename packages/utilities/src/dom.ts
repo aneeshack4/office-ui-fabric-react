@@ -76,10 +76,48 @@ export function getVirtualParent(child: HTMLElement): HTMLElement | undefined {
  * @public
  */
 export function getParent(child: HTMLElement, allowVirtualParents: boolean = true): HTMLElement | null {
-  return (
-    child &&
-    ((allowVirtualParents && getVirtualParent(child)) || (child.parentNode && (child.parentNode as HTMLElement)))
-  );
+  return child && ((allowVirtualParents && getVirtualParent(child)) || (child.parentNode && (child.parentNode as HTMLElement)));
+}
+
+/**
+ * Gets all of the sibling elements of the given element.
+ * If `allowVirtualChildren` is `true`, this method enumerates virtual child elements
+ * after the original children.
+ * @param child - The element to get the parent's siblings of.
+ */
+export function getSiblingsOfParent(child: HTMLElement): Element[] {
+  const allSiblingsOfParents: Element[] = [];
+  const parent = getParent(child, true);
+  if (parent) {
+    let sibling = parent.nextElementSibling;
+    if (sibling) {
+      while (sibling = parent.nextElementSibling) {
+        allSiblingsOfParents.push(sibling);
+      }
+    }
+  }
+  return allSiblingsOfParents;
+}
+
+export function escapeModalDialog() {
+  // Step 1: find all of the parent's siblings, excluding this
+  const allSiblingsOfParents = getSiblingsOfParent(this);
+  // Step 2: filter out hidden
+  if (allSiblingsOfParents) {
+    for (let i = 0; i < allSiblingsOfParents.length; i++) {
+      let currSibling = allSiblingsOfParents[i];
+      if (currSibling.getAttribute('aria-hidden')) {
+        allSiblingsOfParents.pop();
+      }
+    }
+  }
+  // Step 3: mark filtered as hidden
+  if (allSiblingsOfParents) {
+    for (let i = 0; i < allSiblingsOfParents.length; i++) {
+      allSiblingsOfParents[i].setAttribute('aria-hidden', 'true');
+    }
+
+  // Step 4: when modal goes away call remove attribute
 }
 
 /**
@@ -112,11 +150,7 @@ export function getChildren(parent: HTMLElement, allowVirtualChildren: boolean =
  *
  * @public
  */
-export function elementContains(
-  parent: HTMLElement | null,
-  child: HTMLElement | null,
-  allowVirtualParents: boolean = true
-): boolean {
+export function elementContains(parent: HTMLElement | null, child: HTMLElement | null, allowVirtualParents: boolean = true): boolean {
   let isContained = false;
 
   if (parent && child) {
@@ -235,10 +269,7 @@ export function portalContainsElement(target: HTMLElement, parent?: HTMLElement)
  * @param matchFunction - the function that determines if the element is a match
  * @returns the matched element or null no match was found
  */
-export function findElementRecursive(
-  element: HTMLElement | null,
-  matchFunction: (element: HTMLElement) => boolean
-): HTMLElement | null {
+export function findElementRecursive(element: HTMLElement | null, matchFunction: (element: HTMLElement) => boolean): HTMLElement | null {
   if (!element || element === document.body) {
     return null;
   }
