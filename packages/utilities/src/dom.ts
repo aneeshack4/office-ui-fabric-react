@@ -111,7 +111,16 @@ export function escapeModalDialog(): void {
       allSiblingsOfParents[i].setAttribute('aria-hidden', 'true');
     }
   }
+}
+
+export function setSiblingsVisible(): void {
   // Step 4: when modal goes away call remove attribute
+  const allSiblingsOfParents = getSiblingsOfParent(this);
+  if (allSiblingsOfParents) {
+    for (let i = 0; i < allSiblingsOfParents.length; i++) {
+      allSiblingsOfParents[i].removeAttribute('aria-hidden');
+    }
+  }
 }
 
 /**
