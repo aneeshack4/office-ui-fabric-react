@@ -87,37 +87,31 @@ export function getParent(child: HTMLElement, allowVirtualParents: boolean = tru
  */
 export function getSiblingsOfParent(child: HTMLElement): Element[] {
   const allSiblingsOfParents: Element[] = [];
-  const parent = getParent(child, true);
-  if (parent) {
-    let sibling = parent.nextElementSibling;
-    if (sibling) {
-      while (sibling = parent.nextElementSibling) {
-        allSiblingsOfParents.push(sibling);
-      }
-    }
-  }
+  //const parent = getParent(child, true);
+  // if (parent) {
+  //   let sibling = parent.nextElementSibling;
+  //   if (sibling) {
+  //     while ((sibling = parent.nextElementSibling)) {
+  //       // Step 2: filter out hidden
+  //       if (!sibling.getAttribute('aria-hidden')) {
+  //         allSiblingsOfParents.push(sibling);
+  //       }
+  //     }
+  //   }
+  // }
   return allSiblingsOfParents;
 }
 
 export function escapeModalDialog() {
   // Step 1: find all of the parent's siblings, excluding this
   const allSiblingsOfParents = getSiblingsOfParent(this);
-  // Step 2: filter out hidden
-  if (allSiblingsOfParents) {
-    for (let i = 0; i < allSiblingsOfParents.length; i++) {
-      let currSibling = allSiblingsOfParents[i];
-      if (currSibling.getAttribute('aria-hidden')) {
-        allSiblingsOfParents.pop();
-      }
-    }
-  }
-  // Step 3: mark filtered as hidden
-  if (allSiblingsOfParents) {
-    for (let i = 0; i < allSiblingsOfParents.length; i++) {
-      allSiblingsOfParents[i].setAttribute('aria-hidden', 'true');
-    }
-
-  // Step 4: when modal goes away call remove attribute
+  // // Step 3: mark filtered as hidden
+  // if (allSiblingsOfParents) {
+  //   for (let i = 0; i < allSiblingsOfParents.length; i++) {
+  //     allSiblingsOfParents[i].setAttribute('aria-hidden', 'true');
+  //   }
+  // }
+  // // Step 4: when modal goes away call remove attribute
 }
 
 /**
