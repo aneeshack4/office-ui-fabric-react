@@ -53,7 +53,9 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     if (newProps.isOpen) {
       if (!this.state.isOpen) {
         // First Open
-        if (this.componentWillMount) {
+        if (this.componentDidMount) {
+          // Before the state change, dfter component has mounted,
+          // add 'aria-hidden' to all of parent's siblings
           hideSiblings();
         }
         this.setState({
@@ -191,6 +193,8 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       isOpen: false
     });
 
+    // After the state change, before the component's
+    // removed from the DOM, remove 'aria-hidden' from parents' siblings
     if (this.componentWillUnmount) {
       setSiblingsVisible();
     }
