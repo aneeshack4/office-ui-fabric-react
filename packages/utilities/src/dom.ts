@@ -80,50 +80,6 @@ export function getParent(child: HTMLElement, allowVirtualParents: boolean = tru
 }
 
 /**
- * Gets all of the sibling elements of the given element.
- * If `allowVirtualChildren` is `true`, this method enumerates virtual child elements
- * after the original children.
- * @param child - The element to get the parent's siblings of.
- */
-export function getSiblingsOfParent(child: HTMLElement): Element[] {
-  const allSiblingsOfParents: Element[] = [];
-  const parent = getParent(child, true);
-  if (parent) {
-    let sibling = parent.nextElementSibling;
-    if (sibling) {
-      while ((sibling = parent.nextElementSibling)) {
-        // Step 2: filter out hidden
-        if (!sibling.getAttribute('aria-hidden')) {
-          allSiblingsOfParents.push(sibling);
-        }
-      }
-    }
-  }
-  return allSiblingsOfParents;
-}
-
-export function escapeModalDialog(): void {
-  // Step 1: find all of the parent's siblings, excluding this
-  const allSiblingsOfParents = getSiblingsOfParent(this);
-  // Step 3: mark filtered as hidden
-  if (allSiblingsOfParents) {
-    for (let i = 0; i < allSiblingsOfParents.length; i++) {
-      allSiblingsOfParents[i].setAttribute('aria-hidden', 'true');
-    }
-  }
-}
-
-export function setSiblingsVisible(): void {
-  // Step 4: when modal goes away call remove attribute
-  const allSiblingsOfParents = getSiblingsOfParent(this);
-  if (allSiblingsOfParents) {
-    for (let i = 0; i < allSiblingsOfParents.length; i++) {
-      allSiblingsOfParents[i].removeAttribute('aria-hidden');
-    }
-  }
-}
-
-/**
  * Gets the elements which are child elements of the given element.
  * If `allowVirtualChildren` is `true`, this method enumerates virtual child elements
  * after the original children.

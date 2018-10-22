@@ -53,5 +53,8 @@
       "common/scripts/*.js",
       "apps/vr-tests/**/*.{ts,tsx}"
     ]
+  },
+  "dependencies": {
+    "@microsoft/load-themed-styles": "^1.8.23"
   }
 }

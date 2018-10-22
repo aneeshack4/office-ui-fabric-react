@@ -7,6 +7,7 @@ import { Overlay } from '../../Overlay';
 import { Layer } from '../../Layer';
 import { Popup } from '../Popup/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+import { hideSiblings, setSiblingsVisible } from './Modal';
 
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
 
@@ -52,6 +53,9 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     if (newProps.isOpen) {
       if (!this.state.isOpen) {
         // First Open
+        if (this.componentWillMount) {
+          hideSiblings();
+        }
         this.setState({
           isOpen: true
         });
@@ -186,6 +190,10 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     this.setState({
       isOpen: false
     });
+
+    if (this.componentWillUnmount) {
+      setSiblingsVisible();
+    }
 
     // Call the onDismiss callback
     if (this.props.onDismissed) {
