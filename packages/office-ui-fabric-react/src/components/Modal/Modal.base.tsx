@@ -53,11 +53,6 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     if (newProps.isOpen) {
       if (!this.state.isOpen) {
         // First Open
-        if (this.componentDidMount) {
-          // Before the state change, dfter component has mounted,
-          // add 'aria-hidden' to all of parent's siblings
-          hideSiblings();
-        }
         this.setState({
           isOpen: true
         });
@@ -171,6 +166,18 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     return null;
   }
 
+  public componentDidMount(): void {
+    // Before the state change, after component has mounted,
+    // add 'aria-hidden' to all of parent's siblings
+    hideSiblings();
+  }
+
+  public componentWillUnmount(): void {
+    // After the state change, before the component's
+    // removed from the DOM, remove 'aria-hidden' from parents' siblings
+    setSiblingsVisible();
+  }
+
   public focus() {
     if (this._focusTrapZone.current) {
       this._focusTrapZone.current.focus();
@@ -192,12 +199,6 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     this.setState({
       isOpen: false
     });
-
-    // After the state change, before the component's
-    // removed from the DOM, remove 'aria-hidden' from parents' siblings
-    if (this.componentWillUnmount) {
-      setSiblingsVisible();
-    }
 
     // Call the onDismiss callback
     if (this.props.onDismissed) {
