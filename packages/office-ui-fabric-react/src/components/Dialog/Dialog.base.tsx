@@ -123,6 +123,7 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
         onDismiss={onDismiss ? onDismiss : modalProps!.onDismiss}
         subtitleAriaId={this._getSubTextId()}
         titleAriaId={this._getTitleTextId()}
+        ariaModal={true}
       >
         <DialogContent
           titleId={this._defaultTitleTextId}

@@ -32,6 +32,12 @@ export interface IPopupProps extends React.HTMLAttributes<Popup> {
   ariaDescribedBy?: string;
 
   /**
+   * Defines if assistive technologies should be told that the windows underneath
+   * the current dialog are not available for interaction
+   */
+  ariaModal?: boolean;
+
+  /**
    * A callback function for when the popup is dismissed from the close button or light dismiss. If provided, will
    * handle escape keypresses and call this. The event will be stopped/canceled.
    */

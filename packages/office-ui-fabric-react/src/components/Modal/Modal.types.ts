@@ -88,6 +88,12 @@ export interface IModalProps extends React.Props<ModalBase>, IWithResponsiveMode
   subtitleAriaId?: string;
 
   /**
+   * Whether to tell assistive technologies that the windows underneath the current dialog are
+   * not available for interaction.
+   */
+  ariaModal?: boolean;
+
+  /**
    * Whether the modal should have top offset fixed once opened and expand from the bottom only
    * when the content changes dynamically.
    */

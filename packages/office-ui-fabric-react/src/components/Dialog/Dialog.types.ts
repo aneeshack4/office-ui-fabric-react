@@ -145,6 +145,12 @@ export interface IDialogProps extends React.Props<DialogBase>, IWithResponsiveMo
   ariaDescribedById?: string;
 
   /**
+   * Whether to tell assistive technologies that the windows underneath the current dialog are
+   * not available for interaction.
+   */
+  ariaModal?: boolean;
+
+  /**
    * Sets the minimum width of the dialog. It limits the width property to be not
    * smaller than the value specified in min-width.
    */
