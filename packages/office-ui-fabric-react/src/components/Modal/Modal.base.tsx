@@ -7,6 +7,7 @@ import { Overlay } from '../../Overlay';
 import { Layer } from '../../Layer';
 import { Popup } from '../Popup/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+import { hideSiblings, setSiblingsVisible } from './Modal';
 
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
 
@@ -164,6 +165,17 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       );
     }
     return null;
+  }
+
+  public componentDidMount(): void {
+    // Before the state change, after component has mounted,
+    // add 'aria-hidden' to all of parent's siblings
+    hideSiblings();
+  }
+  public componentWillUnmount(): void {
+    // After the state change, before the component's
+    // removed from the DOM, remove 'aria-hidden' from parents' siblings
+    setSiblingsVisible();
   }
 
   public focus() {
