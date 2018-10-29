@@ -78,6 +78,11 @@ export interface IModalProps extends React.Props<ModalBase>, IWithResponsiveMode
   onLayerDidMount?: () => void;
 
   /**
+   * Aria role assigned to the callout (Eg. dialog, alertdialog).
+   */
+  role?: string;
+
+  /**
    * ARIA id for the title of the Modal, if any
    */
   titleAriaId?: string;

@@ -1540,6 +1540,9 @@ export function getScrollbarWidth(): number;
 // @public
 export function getShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
 
+// @public
+export function getSiblingsOfParent(child: HTMLElement): Element[];
+
 // @public (undocumented)
 export function getSubmenuItems(item: IContextualMenuItem): any;
 
@@ -1611,6 +1614,9 @@ export function hasOverflow(element: HTMLElement): boolean;
 
 // @public
 export function hasVerticalOverflow(element: HTMLElement): boolean;
+
+// @public (undocumented)
+export function hideSiblings(): void;
 
 // @public
 export function hoistMethods(destination: any, source: any, exclusions?: string[]): string[];
@@ -6796,6 +6802,7 @@ interface IDialogProps extends React.Props<DialogBase>, IWithResponsiveModeState
   ariaDescribedById?: string;
   // @deprecated
   ariaLabelledById?: string;
+  ariaModal?: boolean;
   // @deprecated
   className?: string;
   componentRef?: IRefObject<IDialog>;
@@ -8228,6 +8235,7 @@ interface IModal {
 
 // @public (undocumented)
 interface IModalProps extends React.Props<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
+  ariaModal?: boolean;
   className?: string;
   componentRef?: IRefObject<IModal>;
   containerClassName?: string;
@@ -8237,6 +8245,7 @@ interface IModalProps extends React.Props<ModalBase>, IWithResponsiveModeState, 
   onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
   onDismissed?: () => any;
   onLayerDidMount?: () => void;
+  role?: string;
   scrollableContentClassName?: string;
   styles?: IStyleFunctionOrObject<IModalStyleProps, IModalStyles>;
   subtitleAriaId?: string;
@@ -8919,6 +8928,7 @@ interface IPopupProps extends React.HTMLAttributes<Popup> {
   ariaDescribedBy?: string;
   ariaLabel?: string;
   ariaLabelledBy?: string;
+  ariaModal?: boolean;
   className?: string;
   componentRef?: IRefObject<IPopup>;
   onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => any;
@@ -11626,6 +11636,9 @@ export function setPortalAttribute(element: HTMLElement): void;
 
 // @public
 export function setRTL(isRTL: boolean, persistSetting?: boolean): void;
+
+// @public (undocumented)
+export function setSiblingsVisible(): void;
 
 // @public
 export function setSSR(isEnabled: boolean): void;
