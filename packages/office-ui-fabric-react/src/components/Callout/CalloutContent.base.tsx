@@ -134,6 +134,10 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     }
   }
 
+  public componentWillUnmount(): void {
+    this.dismiss();
+  }
+
   public render(): JSX.Element | null {
     // If there is no target window then we are likely in server side rendering and we should not render anything.
     if (!this._targetWindow) {
