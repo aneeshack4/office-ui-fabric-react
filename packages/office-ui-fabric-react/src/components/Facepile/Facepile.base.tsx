@@ -131,10 +131,12 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
   }
 
   private _getElementWithOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
+    const { keytipProps } = persona;
     return (
       <FacepileButton
         {...getNativeProps(persona, buttonProperties)}
         {...this._getElementProps(persona, index)}
+        keytipProps={keytipProps}
         onClick={this._onPersonaClick.bind(this, persona)}
       >
         {personaControl}
@@ -188,14 +190,20 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     }
 
     const personaNames: string = personasOverflow.map((p: IFacepilePersona) => p.personaName).join(', ');
+    const overflowButtonTitle: string | undefined = overflowButtonProps && overflowButtonProps.title;
     const numPersonasNotPictured: number = Math.max(personasOverflow.length, 0);
 
     const { _classNames } = this;
 
     return (
-      <FacepileButton {...overflowButtonProps} ariaDescription={personaNames} className={_classNames.descriptiveOverflowButton}>
+      <FacepileButton
+        {...overflowButtonProps}
+        ariaDescription={overflowButtonTitle ? undefined : personaNames}
+        className={_classNames.descriptiveOverflowButton}
+      >
         <PersonaCoin
-          title={personaNames}
+          // Check if a title is being added to the parenting FacepileButton. If so, do not set title on child PersonaCoin
+          title={overflowButtonTitle ? undefined : personaNames}
           size={personaSize}
           onRenderInitials={this._renderInitialsNotPictured(numPersonasNotPictured)}
           initialsColor={PersonaInitialsColor.transparent}
