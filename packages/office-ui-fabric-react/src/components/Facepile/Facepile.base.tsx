@@ -56,7 +56,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
         {this.onRenderAriaDescription()}
         <div className={_classNames.itemContainer}>
           {showAddButton ? this._getAddNewElement() : null}
-          <ul className={_classNames.members}>
+          <ul role="listbox" className={_classNames.members}>
             {this._onRenderVisiblePersonas(personasPrimary, personasOverflow.length === 0 && personas.length === 1)}
           </ul>
           {overflowButtonProps ? this._getOverflowElement(personasOverflow) : null}
@@ -85,7 +85,13 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     return personas.map((persona: IFacepilePersona, index: number) => {
       const personaControl: JSX.Element = singlePersona ? this._getPersonaControl(persona) : this._getPersonaCoinControl(persona);
       return (
-        <li key={`${singlePersona ? 'persona' : 'personaCoin'}-${index}`} className={this._classNames.member}>
+        <li
+          role="option"
+          aria-setsize={personas.length}
+          aria-posinset={index + 1}
+          key={`${singlePersona ? 'persona' : 'personaCoin'}-${index}`}
+          className={this._classNames.member}
+        >
           {persona.onClick
             ? this._getElementWithOnClickEvent(personaControl, persona, index)
             : this._getElementWithoutOnClickEvent(personaControl, persona, index)}
