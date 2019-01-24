@@ -374,6 +374,7 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         max-width: 116px;
                       }
                   onClick={[Function]}
+                  type="button"
                 >
                   <div
                     className=
@@ -548,6 +549,7 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         max-width: 116px;
                       }
                   onClick={[Function]}
+                  type="button"
                 >
                   <div
                     className=
@@ -723,6 +725,7 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         max-width: 116px;
                       }
                   onClick={[Function]}
+                  type="button"
                 >
                   <div
                     className=

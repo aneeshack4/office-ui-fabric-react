@@ -2680,8 +2680,9 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               is-fadeIn
               {
                 display: block;
-                height: auto;
+                height: 100%;
                 left: 50% /* @noflip */;
+                object-fit: cover;
                 opacity: 0;
                 position: absolute;
                 top: 50%;
@@ -2953,8 +2954,9 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                       is-fadeIn
                       {
                         display: block;
-                        height: auto;
+                        height: 100%;
                         left: 50% /* @noflip */;
+                        object-fit: cover;
                         opacity: 0;
                         position: absolute;
                         top: 50%;

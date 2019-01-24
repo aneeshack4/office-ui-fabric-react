@@ -231,6 +231,7 @@ exports[`Link renders Link with no href as a button 1`] = `
         line-height: 0;
       }
   onClick={[Function]}
+  type="button"
 >
   I'm a link as a button
 </button>
@@ -316,6 +317,7 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
       }
   disabled={true}
   onClick={[Function]}
+  type="button"
 >
   I'm a link as a button
 </button>

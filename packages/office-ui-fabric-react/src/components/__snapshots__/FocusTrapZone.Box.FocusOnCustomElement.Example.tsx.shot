@@ -316,6 +316,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
               line-height: 0;
             }
         onClick={[Function]}
+        type="button"
       >
         Hyperlink inside FocusTrapZone
       </button>
