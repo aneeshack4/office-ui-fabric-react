@@ -86,7 +86,7 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
               <ThemeProvider theme={this.state.theme}>
                 <Samples backgroundColor={this.state.backgroundColor.str} />
               </ThemeProvider>
-              <AccessibilityChecker theme={this.state.theme} themeRules={this.state.themeRules} />
+              <AccessibilityChecker onMessageBarClick={this.onMessageBarFix} theme={this.state.theme} themeRules={this.state.themeRules} />
               <FabricPalette themeRules={this.state.themeRules} />
               <SemanticSlots theme={this.state.theme} />;
             </Stack>
@@ -120,6 +120,23 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
       });
       this.setState({ theme: finalTheme });
     }
+  };
+
+  private onMessageBarFix = () => {
+    this.setState({ textColor: getColorFromString('#e1dfdd')! });
+    this.setState({ backgroundColor: getColorFromString('#1b1a19')! });
+
+    const themeRules = this.state.themeRules;
+    if (themeRules) {
+      const currentIsDark = isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!);
+      ThemeGenerator.setSlot(themeRules[BaseSlots[BaseSlots.foregroundColor]], getColorFromString('#e1dfdd')!, currentIsDark, true, true);
+      ThemeGenerator.setSlot(themeRules[BaseSlots[BaseSlots.backgroundColor]], getColorFromString('#1b1a19')!, currentIsDark, true, true);
+      if (currentIsDark !== isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)) {
+        // isInverted got swapped, so need to refresh slots with new shading rules
+        ThemeGenerator.insureSlots(themeRules, currentIsDark);
+      }
+    }
+    this.setState({ themeRules: themeRules }, this._makeNewTheme);
   };
 
   private _onColorChange = (colorToChange: IColor, baseSlot: BaseSlots, newColor: IColor | undefined) => {
@@ -170,7 +187,8 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
     } = ThemeGenerator.getThemeAsJson(themeRules);
 
     const finalTheme = createTheme({
-      ...{ palette: themeAsJson }
+      ...{ palette: themeAsJson },
+      isInverted: isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)
     });
 
     const state = {
