@@ -64,8 +64,7 @@ const Main = (props: IStackProps) => (
     disableShrink
     className={mergeStyles({
       minWidth: MainPanelWidth,
-      overflow: 'scroll',
-      marginTop: '35px'
+      overflow: 'scroll'
     })}
     {...props}
   />

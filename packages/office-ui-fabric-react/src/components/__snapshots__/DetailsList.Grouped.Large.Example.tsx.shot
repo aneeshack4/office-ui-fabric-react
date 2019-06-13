@@ -914,7 +914,9 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                 opacity: 1;
                                 transform: rotate(0.2deg) scale(1);
                                 transition-delay: 0.367s;
-                                transition: transform 0.467s cubic-bezier(0.075, 0.820, 0.165, 1.000) opacity 0.167s cubic-bezier(0.390, 0.575, 0.565, 1.000);
+                                transition: transform 0.467s
+                                              cubic-bezier(0.075, 0.820, 0.165, 1.000) opacity 0.167s
+                                              cubic-bezier(0.390, 0.575, 0.565, 1.000);
                               }
                               .ms-GroupedList-group.is-dropping $check {
                                 opacity: 0;
@@ -1093,7 +1095,9 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                     position: absolute;
                                     transform-origin: 10px 10px;
                                     transform: rotate(0.2deg) scale(0.65);
-                                    transition: transform 0.267s cubic-bezier(0.600, -0.280, 0.735, 0.045), opacity 0.467s cubic-bezier(0.390, 0.575, 0.565, 1.000);
+                                    transition: transform 0.267s
+                                          cubic-bezier(0.600, -0.280, 0.735, 0.045), opacity 0.467s
+                                          cubic-bezier(0.390, 0.575, 0.565, 1.000);
                                   }
                                   .ms-Icon--Tag {
                                     position: absolute;
