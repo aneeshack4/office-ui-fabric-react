@@ -20,6 +20,16 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
   private _id: string;
   private _classNames: { [key in keyof ICheckboxStyles]: string };
 
+  public static getDerivedStateFromProps(props: ICheckboxProps, state: ICheckboxState): ICheckboxState {
+    if (props.checked !== undefined) {
+      return {
+        ...state,
+        isChecked: !!props.checked
+      };
+    }
+    return state;
+  }
+
   /**
    * Initialize a new instance of the Checkbox
    * @param props - Props for the component
@@ -40,14 +50,6 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
     this.state = {
       isChecked: !!(props.checked !== undefined ? props.checked : props.defaultChecked)
     };
-  }
-
-  public componentWillReceiveProps(newProps: ICheckboxProps): void {
-    if (newProps.checked !== undefined) {
-      this.setState({
-        isChecked: !!newProps.checked // convert null to false
-      });
-    }
   }
 
   /**
@@ -95,8 +97,8 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
               type="checkbox"
               {...inputProps}
               data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
-              {...checked !== undefined && { checked }}
-              {...defaultChecked !== undefined && { defaultChecked }}
+              {...(checked !== undefined && { checked })}
+              {...(defaultChecked !== undefined && { defaultChecked })}
               disabled={disabled}
               className={this._classNames.input}
               ref={this._checkBox}

@@ -139,7 +139,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     _allInstances[this._id] = this;
 
     if (root) {
-      const windowElement = root.ownerDocument!.defaultView;
+      const windowElement = root.ownerDocument!.defaultView!;
 
       let parentElement = getParent(root, ALLOW_VIRTUAL_ELEMENTS);
 
@@ -224,7 +224,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
           // root props has been deprecated and should get removed.
           // it needs to be marked as "any" since root props expects a div element, but really Tag can
           // be any native element so typescript rightly flags this as a problem.
-          ...rootProps as any
+          ...(rootProps as any)
         }
         // Once the getClassName correctly memoizes inputs this should
         // be replaced so that className is passed to getRootClass and is included there so

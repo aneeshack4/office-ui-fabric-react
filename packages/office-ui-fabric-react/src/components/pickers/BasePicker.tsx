@@ -257,7 +257,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
               {this.canAddItems() && (
                 <Autofill
                   spellCheck={false}
-                  {...inputProps as any}
+                  {...(inputProps as any)}
                   className={classNames.input}
                   componentRef={this.input}
                   onFocus={this.onInputFocus}
@@ -306,7 +306,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         {...this.props.pickerCalloutProps}
       >
         <StyledTypedSuggestions
-          onRenderSuggestion={this.props.onRenderSuggestionsItem}
+          // Assumed to set in derived component's defaultProps
+          onRenderSuggestion={this.props.onRenderSuggestionsItem!}
           onSuggestionClick={this.onSuggestionClick}
           onSuggestionRemove={this.onSuggestionRemove}
           suggestions={this.suggestionStore.getSuggestions()}
@@ -902,7 +903,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
           {this.getSuggestionsAlert(classNames.screenReaderText)}
           <div className={classNames.text}>
             <Autofill
-              {...inputProps as any}
+              {...(inputProps as any)}
               className={classNames.input}
               componentRef={this.input}
               onFocus={this.onInputFocus}
