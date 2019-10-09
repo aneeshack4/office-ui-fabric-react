@@ -84,7 +84,7 @@ export function createApp(
 }
 
 function _getComponent<TProps extends React.Props<{}>>(props: TProps): JSX.Element {
-  return <div {...(props as React.HTMLAttributes<HTMLDivElement>)} />;
+  return <div {...props as React.HTMLAttributes<HTMLDivElement>} />;
 }
 
 function _getDefinition(groups: ExampleGroup[]): IAppDefinition {
@@ -107,11 +107,11 @@ function _getDefinition(groups: ExampleGroup[]): IAppDefinition {
       },
       {
         name: 'Fabric',
-        url: 'http://dev.office.com/fabric'
+        url: 'https://dev.microsoft.com/fabric'
       },
       {
-        name: 'Github',
-        url: 'http://www.github.com/officedev'
+        name: 'GitHub',
+        url: 'https://github.com/OfficeDev/office-ui-fabric-react'
       }
     ]
   };

@@ -2,7 +2,6 @@ import { IPanelStyleProps, IPanelStyles, PanelType } from './Panel.types';
 import {
   AnimationClassNames,
   AnimationVariables,
-  DefaultFontStyles,
   getGlobalClassNames,
   HighContrastSelector,
   ScreenWidthMinMedium,
@@ -12,8 +11,6 @@ import {
   ScreenWidthMinUhfMobile,
   IStyle
 } from '../../Styling';
-import { FontWeights } from '../../Styling';
-import { getWindow } from '../../Utilities';
 
 // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
 // import { IStyleFunctionOrObject } from '../../Utilities';
@@ -157,17 +154,7 @@ const commandBarHeight = '44px';
 
 const sharedPaddingStyles = {
   paddingLeft: '16px',
-  paddingRight: '16px',
-  selectors: {
-    [`@media screen and (min-width: ${ScreenWidthMinLarge}px)`]: {
-      paddingLeft: '32px',
-      paddingRight: '32px'
-    },
-    [`@media screen and (min-width: ${ScreenWidthMinXXLarge}px)`]: {
-      paddingLeft: '40px',
-      paddingRight: '40px'
-    }
-  }
+  paddingRight: '16px'
 };
 
 // // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
@@ -193,19 +180,17 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     hasCloseButton,
     headerClassName,
     isAnimating,
-    isFooterAtBottom,
     isFooterSticky,
+    isFooterAtBottom,
     isOnRightSide,
     isOpen,
     isHiddenOnDismiss,
     theme,
     type = PanelType.smallFixedFar
   } = props;
-  const { palette, effects } = theme;
+  const { palette, effects, fonts } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
   const isCustomPanel = type === PanelType.custom || type === PanelType.customNear;
-  const win = getWindow();
-  const windowHeight = typeof win !== 'undefined' ? win.innerHeight : '100%';
 
   return {
     root: [
@@ -252,7 +237,6 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         overflowX: 'hidden',
         overflowY: 'auto',
         WebkitOverflowScrolling: 'touch',
-        maxHeight: windowHeight,
         bottom: 0,
         top: 0,
         // (left, right, width) - Properties to be overridden depending on the type of the Panel and the screen breakpoint.
@@ -282,9 +266,6 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       isCustomPanel && {
         maxWidth: '100vw'
       },
-      isFooterAtBottom && {
-        height: windowHeight
-      },
       isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideRightIn40,
       isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideLeftIn40,
       !isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideLeftOut40,
@@ -308,11 +289,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         display: 'flex',
         flexDirection: 'column',
         flexGrow: 1,
-        maxHeight: windowHeight,
         overflowY: 'hidden'
-      },
-      isFooterAtBottom && {
-        height: windowHeight
       }
     ],
     header: [
@@ -321,7 +298,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       {
         margin: '14px 0',
         // Ensure that title doesn't shrink if screen is too small
-        flexGrow: 0,
+        flexShrink: 0,
         selectors: {
           [`@media (min-width: ${ScreenWidthMinXLarge}px)`]: {
             marginTop: '30px'
@@ -331,21 +308,25 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     ],
     headerText: [
       classNames.headerText,
-      DefaultFontStyles.xLarge,
+      fonts.xLarge,
       {
         color: palette.neutralPrimary,
-        fontSize: 20, // TODO: after the type ramp gets reevaluated this needs to be changed
-        fontWeight: FontWeights.semibold,
         lineHeight: '27px',
-        margin: 0
+        margin: 0,
+        overflowWrap: 'break-word',
+        wordWrap: 'break-word',
+        wordBreak: 'break-word',
+        hyphens: 'auto'
       },
       headerClassName
     ],
     scrollableContent: [
       classNames.scrollableContent,
       {
-        overflowY: 'auto',
-        height: windowHeight
+        overflowY: 'auto'
+      },
+      isFooterAtBottom && {
+        flexGrow: 1
       }
     ],
     content: [
@@ -360,7 +341,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       classNames.footer,
       {
         // Ensure that footer doesn't shrink if screen is too small
-        flexGrow: 0,
+        flexShrink: 0,
         borderTop: '1px solid transparent',
         transition: `opacity ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction2}`
       },

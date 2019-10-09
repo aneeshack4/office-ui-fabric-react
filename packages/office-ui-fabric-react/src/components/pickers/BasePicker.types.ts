@@ -60,9 +60,19 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   resolveDelay?: number;
 
   /**
-   * A callback for what should happen when a user clicks the input.
+   * A callback for what should happen when a user clicks within the input area.
+   * @deprecated Please use onEmptyResolveSuggestions instead, as the suggestions aren't about
+   * setting focus as they are about resolving suggestions when there is no input.
    */
   onEmptyInputFocus?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
+
+  /**
+   * A callback for what should happen when suggestions are shown without
+   * input provided.
+   * Returns the already selected items so the resolver can filter them out.
+   * If used in conjunction with resolveDelay this will ony kick off after the delay throttle.
+   */
+  onEmptyResolveSuggestions?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
 
   /**
    * Initial items that have already been selected and should appear in the people picker.
@@ -76,6 +86,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
 
   /**
    * A callback for when the user put focus on the picker
+   * @deprecated Use `inputProps.onFocus` instead
    */
   onFocus?: React.FocusEventHandler<HTMLInputElement | BaseAutoFill>;
 

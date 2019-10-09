@@ -11,7 +11,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
-  role="presentation"
+  role="grid"
 >
   <div
     aria-rowindex={1}
@@ -73,19 +73,17 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         &:hover .is-row-header {
           color: #201f1e;
         }
-        &:hover $check {
+        &:hover .ms-DetailsRow-check {
           opacity: 1;
         }
-        .ms-Fabric--isFocusVisible &:focus $check {
+        .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone1"
-    data-is-draggable={false}
     data-is-focusable={true}
     data-item-index={0}
     data-selection-index={0}
-    draggable={false}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -238,7 +236,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               @media screen and (-ms-high-contrast: active){& {
                 border-bottom: none;
               }
-              &:active, &:hover, &:active:hover {
+              &:active {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:hover {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:active:hover {
                 color: #004578;
                 text-decoration: underline;
               }
@@ -296,7 +302,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="link"
+        data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
@@ -383,7 +389,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -393,18 +399,21 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -415,9 +424,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 id="id__2"
               >
                 http://placehold.it/100x200
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
       </div>
     </div>
@@ -497,19 +506,17 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         &:hover .is-row-header {
           color: #201f1e;
         }
-        &:hover $check {
+        &:hover .ms-DetailsRow-check {
           opacity: 1;
         }
-        .ms-Fabric--isFocusVisible &:focus $check {
+        .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone5"
-    data-is-draggable={false}
     data-is-focusable={true}
     data-item-index={1}
     data-selection-index={1}
-    draggable={false}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -662,7 +669,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               @media screen and (-ms-high-contrast: active){& {
                 border-bottom: none;
               }
-              &:active, &:hover, &:active:hover {
+              &:active {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:hover {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:active:hover {
                 color: #004578;
                 text-decoration: underline;
               }
@@ -720,7 +735,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="link"
+        data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
@@ -807,7 +822,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -817,18 +832,21 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -839,9 +857,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 id="id__6"
               >
                 http://placehold.it/100x201
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
       </div>
     </div>
@@ -921,19 +939,17 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         &:hover .is-row-header {
           color: #201f1e;
         }
-        &:hover $check {
+        &:hover .ms-DetailsRow-check {
           opacity: 1;
         }
-        .ms-Fabric--isFocusVisible &:focus $check {
+        .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone9"
-    data-is-draggable={false}
     data-is-focusable={true}
     data-item-index={2}
     data-selection-index={2}
-    draggable={false}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1086,7 +1102,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               @media screen and (-ms-high-contrast: active){& {
                 border-bottom: none;
               }
-              &:active, &:hover, &:active:hover {
+              &:active {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:hover {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:active:hover {
                 color: #004578;
                 text-decoration: underline;
               }
@@ -1144,7 +1168,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="link"
+        data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
@@ -1231,7 +1255,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1241,18 +1265,21 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -1263,9 +1290,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 id="id__10"
               >
                 http://placehold.it/100x202
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
       </div>
     </div>
@@ -1345,19 +1372,17 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         &:hover .is-row-header {
           color: #201f1e;
         }
-        &:hover $check {
+        &:hover .ms-DetailsRow-check {
           opacity: 1;
         }
-        .ms-Fabric--isFocusVisible &:focus $check {
+        .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone13"
-    data-is-draggable={false}
     data-is-focusable={true}
     data-item-index={3}
     data-selection-index={3}
-    draggable={false}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1510,7 +1535,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               @media screen and (-ms-high-contrast: active){& {
                 border-bottom: none;
               }
-              &:active, &:hover, &:active:hover {
+              &:active {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:hover {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:active:hover {
                 color: #004578;
                 text-decoration: underline;
               }
@@ -1568,7 +1601,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="link"
+        data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
@@ -1655,7 +1688,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1665,18 +1698,21 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -1687,9 +1723,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 id="id__14"
               >
                 http://placehold.it/100x203
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
       </div>
     </div>
@@ -1769,19 +1805,17 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         &:hover .is-row-header {
           color: #201f1e;
         }
-        &:hover $check {
+        &:hover .ms-DetailsRow-check {
           opacity: 1;
         }
-        .ms-Fabric--isFocusVisible &:focus $check {
+        .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone17"
-    data-is-draggable={false}
     data-is-focusable={true}
     data-item-index={4}
     data-selection-index={4}
-    draggable={false}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1934,7 +1968,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               @media screen and (-ms-high-contrast: active){& {
                 border-bottom: none;
               }
-              &:active, &:hover, &:active:hover {
+              &:active {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:hover {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:active:hover {
                 color: #004578;
                 text-decoration: underline;
               }
@@ -1992,7 +2034,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="link"
+        data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
@@ -2079,7 +2121,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -2089,18 +2131,21 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -2111,9 +2156,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 id="id__18"
               >
                 http://placehold.it/100x204
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
       </div>
     </div>
@@ -2193,19 +2238,17 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         &:hover .is-row-header {
           color: #201f1e;
         }
-        &:hover $check {
+        &:hover .ms-DetailsRow-check {
           opacity: 1;
         }
-        .ms-Fabric--isFocusVisible &:focus $check {
+        .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone21"
-    data-is-draggable={false}
     data-is-focusable={true}
     data-item-index={5}
     data-selection-index={5}
-    draggable={false}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2358,7 +2401,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               @media screen and (-ms-high-contrast: active){& {
                 border-bottom: none;
               }
-              &:active, &:hover, &:active:hover {
+              &:active {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:hover {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:active:hover {
                 color: #004578;
                 text-decoration: underline;
               }
@@ -2416,7 +2467,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="link"
+        data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
@@ -2503,7 +2554,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -2513,18 +2564,21 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -2535,9 +2589,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 id="id__22"
               >
                 http://placehold.it/100x205
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
       </div>
     </div>
@@ -2617,19 +2671,17 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         &:hover .is-row-header {
           color: #201f1e;
         }
-        &:hover $check {
+        &:hover .ms-DetailsRow-check {
           opacity: 1;
         }
-        .ms-Fabric--isFocusVisible &:focus $check {
+        .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone25"
-    data-is-draggable={false}
     data-is-focusable={true}
     data-item-index={6}
     data-selection-index={6}
-    draggable={false}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2782,7 +2834,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               @media screen and (-ms-high-contrast: active){& {
                 border-bottom: none;
               }
-              &:active, &:hover, &:active:hover {
+              &:active {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:hover {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:active:hover {
                 color: #004578;
                 text-decoration: underline;
               }
@@ -2840,7 +2900,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="link"
+        data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
@@ -2927,7 +2987,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -2937,18 +2997,21 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -2959,9 +3022,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 id="id__26"
               >
                 http://placehold.it/100x206
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
       </div>
     </div>
@@ -3041,19 +3104,17 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         &:hover .is-row-header {
           color: #201f1e;
         }
-        &:hover $check {
+        &:hover .ms-DetailsRow-check {
           opacity: 1;
         }
-        .ms-Fabric--isFocusVisible &:focus $check {
+        .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone29"
-    data-is-draggable={false}
     data-is-focusable={true}
     data-item-index={7}
     data-selection-index={7}
-    draggable={false}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3206,7 +3267,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               @media screen and (-ms-high-contrast: active){& {
                 border-bottom: none;
               }
-              &:active, &:hover, &:active:hover {
+              &:active {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:hover {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:active:hover {
                 color: #004578;
                 text-decoration: underline;
               }
@@ -3264,7 +3333,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="link"
+        data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
@@ -3351,7 +3420,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -3361,18 +3430,21 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -3383,9 +3455,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 id="id__30"
               >
                 http://placehold.it/100x207
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
       </div>
     </div>
@@ -3465,19 +3537,17 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         &:hover .is-row-header {
           color: #201f1e;
         }
-        &:hover $check {
+        &:hover .ms-DetailsRow-check {
           opacity: 1;
         }
-        .ms-Fabric--isFocusVisible &:focus $check {
+        .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone33"
-    data-is-draggable={false}
     data-is-focusable={true}
     data-item-index={8}
     data-selection-index={8}
-    draggable={false}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3630,7 +3700,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               @media screen and (-ms-high-contrast: active){& {
                 border-bottom: none;
               }
-              &:active, &:hover, &:active:hover {
+              &:active {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:hover {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:active:hover {
                 color: #004578;
                 text-decoration: underline;
               }
@@ -3688,7 +3766,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="link"
+        data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
@@ -3775,7 +3853,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -3785,18 +3863,21 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -3807,9 +3888,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 id="id__34"
               >
                 http://placehold.it/100x208
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
       </div>
     </div>
@@ -3889,19 +3970,17 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         &:hover .is-row-header {
           color: #201f1e;
         }
-        &:hover $check {
+        &:hover .ms-DetailsRow-check {
           opacity: 1;
         }
-        .ms-Fabric--isFocusVisible &:focus $check {
+        .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone37"
-    data-is-draggable={false}
     data-is-focusable={true}
     data-item-index={9}
     data-selection-index={9}
-    draggable={false}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -4054,7 +4133,15 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               @media screen and (-ms-high-contrast: active){& {
                 border-bottom: none;
               }
-              &:active, &:hover, &:active:hover {
+              &:active {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:hover {
+                color: #004578;
+                text-decoration: underline;
+              }
+              &:active:hover {
                 color: #004578;
                 text-decoration: underline;
               }
@@ -4112,7 +4199,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="link"
+        data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
@@ -4199,7 +4286,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -4209,18 +4296,21 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -4231,9 +4321,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 id="id__38"
               >
                 http://placehold.it/100x209
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
       </div>
     </div>

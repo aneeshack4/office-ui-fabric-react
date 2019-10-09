@@ -16,6 +16,10 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
         is-enabled
         {
           display: flex;
+          margin-bottom: 10px;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 10px;
           position: relative;
         }
         &:hover .ms-Checkbox-checkbox {
@@ -25,6 +29,10 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
         &:focus .ms-Checkbox-checkbox {
           background: #005a9e;
           border-color: #005a9e;
+        }
+        & .ms-Checkbox-checkbox {
+          background: #0078d4;
+          border-color: #0078d4;
         }
         @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
           background: Window;
@@ -50,6 +58,8 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
         }
   >
     <input
+      aria-checked="true"
+      aria-label="Is marquee enabled"
       className=
 
           {
@@ -114,6 +124,7 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
               justify-content: center;
               margin-right: 4px;
               overflow: hidden;
+              position: relative;
               transition-duration: 200ms;
               transition-property: background, border, border-color;
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -144,12 +155,12 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
                 color: Window;
               }
           data-icon-name="CheckMark"
-          role="presentation"
         >
           
         </i>
       </div>
       <span
+        aria-hidden="true"
         className=
             ms-Checkbox-text
             {

@@ -16,8 +16,10 @@
 
 `Widget.UIFabric.CircularProgress.Large.Primary`
 
-### Library
+### Source code
 
-[UI Fabric Android](https://github.com/OfficeDev/ui-fabric-android)
+[CircularProgress styles](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric/src/main/res/values/styles.xml)
 
-[Sample Code](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/res/layout/activity_progress.xml)
+### Sample code
+
+[Progress demo XML](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/res/layout/activity_progress.xml)

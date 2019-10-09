@@ -1,4 +1,12 @@
-import { AnimationClassNames, FontSizes, getGlobalClassNames, HighContrastSelector, IStyle, normalize } from '../../Styling';
+import {
+  AnimationClassNames,
+  getGlobalClassNames,
+  HighContrastSelector,
+  IStyle,
+  normalize,
+  getPlaceholderStyles,
+  IconFontSizes
+} from '../../Styling';
 import { ILabelStyles, ILabelStyleProps } from '../../Label';
 import { ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
@@ -24,15 +32,17 @@ const globalClassNames = {
 };
 
 function getLabelStyles(props: ITextFieldStyleProps): IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles> {
-  const { underlined, disabled, focused } = props;
+  const { underlined, disabled, focused, theme } = props;
+  const { palette, fonts } = theme;
+
   return () => ({
     root: [
       underlined &&
         disabled && {
-          color: props.theme.palette.neutralTertiary
+          color: palette.neutralTertiary
         },
       underlined && {
-        fontSize: FontSizes.medium,
+        fontSize: fonts.medium.fontSize,
         marginRight: 8,
         paddingLeft: 12,
         paddingRight: 0,
@@ -69,7 +79,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     autoAdjustHeight
   } = props;
 
-  const { semanticColors, effects } = theme;
+  const { semanticColors, effects, fonts } = theme;
 
   const classNames = getGlobalClassNames(globalClassNames, theme);
 
@@ -84,10 +94,23 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     flexShrink: 0
   };
 
+  // placeholder style constants
+  const placeholderStyles: IStyle = [
+    fonts.medium,
+    {
+      color: semanticColors.inputPlaceholderText,
+      opacity: 1
+    }
+  ];
+
+  const disabledPlaceholderStyles: IStyle = {
+    color: semanticColors.disabledText
+  };
+
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      fonts.medium,
       required && classNames.required,
       disabled && classNames.disabled,
       focused && classNames.active,
@@ -257,11 +280,10 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         }
     ],
     field: [
-      theme.fonts.medium,
+      fonts.medium,
       classNames.field,
       normalize,
       {
-        fontSize: FontSizes.medium,
         borderRadius: 0,
         border: 'none',
         background: 'none',
@@ -276,23 +298,10 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           '&:active, &:focus, &:hover': { outline: 0 },
           '::-ms-clear': {
             display: 'none'
-          },
-          '::placeholder': [
-            theme.fonts.medium,
-            {
-              color: semanticColors.inputPlaceholderText,
-              opacity: 1
-            }
-          ],
-          ':-ms-input-placeholder': [
-            theme.fonts.medium,
-            {
-              color: semanticColors.inputPlaceholderText,
-              opacity: 1
-            }
-          ]
+          }
         }
       },
+      getPlaceholderStyles(placeholderStyles),
       multiline &&
         !resizable && [
           classNames.unresizable,
@@ -320,19 +329,14 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         hasIcon && {
           paddingRight: 40
         },
-      disabled && {
-        backgroundColor: 'transparent',
-        borderColor: 'transparent',
-        color: semanticColors.disabledText,
-        selectors: {
-          '::placeholder': {
-            color: semanticColors.disabledText
-          },
-          ':-ms-input-placeholder': {
-            color: semanticColors.disabledText
-          }
-        }
-      },
+      disabled && [
+        {
+          backgroundColor: 'transparent',
+          borderColor: 'transparent',
+          color: semanticColors.disabledText
+        },
+        getPlaceholderStyles(disabledPlaceholderStyles)
+      ],
       underlined && {
         textAlign: 'left'
       },
@@ -368,7 +372,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         bottom: 5,
         right: 8,
         top: 'auto',
-        fontSize: 16,
+        fontSize: IconFontSizes.medium,
         lineHeight: 18
       },
       disabled && {
@@ -379,13 +383,13 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       classNames.description,
       {
         color: semanticColors.bodySubtext,
-        fontSize: FontSizes.xSmall
+        fontSize: fonts.xSmall.fontSize
       }
     ],
     errorMessage: [
       classNames.errorMessage,
       AnimationClassNames.slideDownIn20,
-      theme.fonts.small,
+      fonts.small,
       {
         color: semanticColors.errorText,
         margin: 0,

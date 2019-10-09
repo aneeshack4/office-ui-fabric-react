@@ -3,6 +3,8 @@ import { IIconProps } from '../../Icon';
 import { IRefObject, IRenderFunction, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
 import { ITheme, IStyle } from '../../Styling';
 import { IFocusZoneProps } from '../../FocusZone';
+import { ITooltipHostProps } from '../../Tooltip';
+import { IButtonProps } from '../Button/Button.types';
 
 /**
  * {@docCategory Breadcrumb}
@@ -49,6 +51,10 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
   dividerAs?: IComponentAs<IDividerAsProps>;
 
   /**
+   * Render a custom overflow icon in place of the default icon `...`
+   */
+  onRenderOverflowIcon?: IRenderFunction<IButtonProps>;
+  /**
    * The maximum number of breadcrumbs to display before coalescing.
    * If not specified, all breadcrumbs will be rendered.
    */
@@ -86,6 +92,11 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
    * Focuszone props that will get passed through to the root focus zone.
    */
   focusZoneProps?: IFocusZoneProps;
+
+  /**
+   * TooltipHost props that will get passed through to overflow tooltips.
+   */
+  tooltipHostProps?: ITooltipHostProps;
 }
 
 /**
@@ -113,10 +124,15 @@ export interface IBreadcrumbItem {
   href?: string;
 
   /**
-   * If this breadcrumb item is the item the user is currently on, if set to true, aria-current="page" will be applied to this
+   * If this breadcrumb item is the item the user is currently on, if set to true, aria-current='page' will be applied to this
    * breadcrumb link
    */
   isCurrentItem?: boolean;
+
+  /**
+   * Optional prop to render item as a heading of your choice.
+   */
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 }
 
 /**

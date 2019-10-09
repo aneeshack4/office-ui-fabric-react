@@ -61,6 +61,8 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
             position: relative;
           }
       onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
       style={
         Object {
           "maxHeight": 752,
@@ -179,6 +181,7 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
               margin-right: 0px;
               margin-top: 0px;
             }
+        role="heading"
       >
         Test Title
       </p>
@@ -259,6 +262,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               margin-right: 0px;
               margin-top: 0px;
             }
+        role="heading"
       >
         Test Title
       </p>
@@ -293,6 +297,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
             align-items: center;
             color: #ffffff;
             display: flex;
+            justify-content: flex-end;
           }
           & .ms-Button:not(:first-child) {
             margin-left: 16px;
@@ -312,7 +317,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               border-radius: 2px;
               border: none;
               box-sizing: border-box;
-              color: #ffffff;
+              color: #0078d4;
               cursor: pointer;
               display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -336,12 +341,12 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border-color: #ffffff;
-              border: 1px solid transparent;
+              border: none;
               bottom: 2px;
               content: "";
               left: 2px;
-              outline: none;
+              outline-color: #ffffff;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 2px;
               top: 2px;
@@ -368,7 +373,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
             &:hover {
               background-color: #deecf9;
               border-color: #deecf9;
-              color: #ffffff;
+              color: #0078d4;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               background-color: Highlight;
@@ -381,7 +386,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
             &:active {
               background-color: #ffffff;
               border-color: #ffffff;
-              color: #ffffff;
+              color: #0078d4;
             }
             @media screen and (-ms-high-contrast: active){&:active {
               -ms-high-contrast-adjust: none;
@@ -391,7 +396,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
             & .ms-Button-label {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #0078d4;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
@@ -405,7 +409,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
         onMouseUp={[Function]}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -415,18 +419,21 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
-          <div
+          <span
             className=
                 ms-Button-textContainer
                 {
+                  display: block;
                   flex-grow: 1;
                 }
           >
-            <div
+            <span
               className=
                   ms-Button-label
                   {
+                    display: block;
                     font-weight: 600;
                     line-height: 100%;
                     margin-bottom: 0;
@@ -437,9 +444,9 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               id="id__0"
             >
               Test Primary Button
-            </div>
-          </div>
-        </div>
+            </span>
+          </span>
+        </span>
       </button>
       <button
         className=
@@ -503,12 +510,17 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               top: 0px;
             }
             &:hover {
-              background-color: #f3f2f1;
+              background-color: #106ebe;
+              border-color: #ffffff;
               color: #201f1e;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
               color: Highlight;
+            }
+            &:focus {
+              background-color: #106ebe;
+              border-color: #ffffff;
             }
             &:active {
               background-color: #0078d4;
@@ -523,10 +535,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               font-size: 14px;
               font-weight: 400;
             }
-            &:hover, &:focus {
-              background-color: #106ebe;
-              border-color: #ffffff;
-            }
         data-is-focusable={true}
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -536,7 +544,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
         onMouseUp={[Function]}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -546,18 +554,21 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
-          <div
+          <span
             className=
                 ms-Button-textContainer
                 {
+                  display: block;
                   flex-grow: 1;
                 }
           >
-            <div
+            <span
               className=
                   ms-Button-label
                   {
+                    display: block;
                     font-weight: 600;
                     line-height: 100%;
                     margin-bottom: 0;
@@ -568,9 +579,9 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               id="id__3"
             >
               Test Secondary Button
-            </div>
-          </div>
-        </div>
+            </span>
+          </span>
+        </span>
       </button>
     </div>
   </div>
@@ -657,7 +668,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
     onMouseUp={[Function]}
     type="button"
   >
-    <div
+    <span
       className=
           ms-Button-flexContainer
           {
@@ -667,27 +678,33 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
             height: 100%;
             justify-content: center;
           }
+      data-automationid="splitbuttonprimary"
     >
       <i
         aria-hidden={true}
         className=
+            ms-Icon
             ms-Button-icon
+            {
+              display: inline-block;
+            }
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              display: inline-block;
-              flex-shrink: 0;
               font-family: "FabricMDL2Icons";
-              font-size: 16px;
               font-style: normal;
               font-weight: normal;
+              speak: none;
+            }
+            {
+              flex-shrink: 0;
+              font-size: 16px;
               height: 16px;
               line-height: 16px;
               margin-bottom: 0;
               margin-left: 4px;
               margin-right: 4px;
               margin-top: 0;
-              speak: none;
               text-align: center;
               vertical-align: middle;
             }
@@ -696,7 +713,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
       >
         
       </i>
-    </div>
+    </span>
   </button>
 </div>
 `;
@@ -754,6 +771,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
               margin-right: 0px;
               margin-top: 0px;
             }
+        role="heading"
       >
         Test Title
       </p>
@@ -844,6 +862,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
             align-items: center;
             color: #ffffff;
             display: flex;
+            justify-content: flex-end;
           }
           & .ms-Button:not(:first-child) {
             margin-left: 16px;
@@ -946,6 +965,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
               margin-right: 0px;
               margin-top: 0px;
             }
+        role="heading"
       >
         Test Title
       </p>
@@ -1033,6 +1053,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
               margin-right: 0px;
               margin-top: 0px;
             }
+        role="heading"
       >
         Test Title
       </p>

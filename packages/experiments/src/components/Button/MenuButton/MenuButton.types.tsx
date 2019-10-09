@@ -1,12 +1,20 @@
-import { IComponent, IComponentStyles, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
-import { IContextualMenuSlot, IIconSlot } from '../../../utilities/factoryComponents.types';
+// Temporary import file to experiment with next version of foundation.
+import { IComponent } from '@uifabric/foundation/lib/next/IComponent';
+import { IComponentStyles, IHTMLSlot, ISlottableProps, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
+import { IContextualMenuSlot, IFontIconSlot } from '../../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../../Utilities';
-import { IButtonProps, IButtonSlot, IButtonSlots, IButtonTokens, IButtonViewProps, INativeButtonProps } from '../Button.types';
+import { IButton, IButtonProps, IButtonSlot, IButtonSlots, IButtonTokens, IButtonViewProps, INativeButtonProps } from '../Button.types';
 
 /**
  * {@docCategory Button}
  */
-export type IMenuButtonComponent = IComponent<IMenuButtonProps, IMenuButtonTokens, IMenuButtonStyles, IMenuButtonViewProps>;
+export type IMenuButtonComponent = IComponent<
+  IMenuButtonProps,
+  IMenuButtonTokens,
+  IMenuButtonStyles,
+  IMenuButtonViewProps,
+  IMenuButtonSlots
+>;
 
 // These types are redundant with IButtonComponent but are needed until TS function return widening issue is resolved:
 // https://github.com/Microsoft/TypeScript/issues/241
@@ -35,6 +43,11 @@ export interface IMenuButtonSlots extends IButtonSlots {
   button?: IButtonSlot;
 
   /**
+   * Defines the section on the right of the MenuButton that contains the menu icon.
+   */
+  menuArea?: IHTMLSlot;
+
+  /**
    * Defines the contextual menu that appears when you click on the MenuButton.
    */
   menu?: IContextualMenuSlot;
@@ -42,25 +55,20 @@ export interface IMenuButtonSlots extends IButtonSlots {
   /**
    * Defines the menu chevron icon that is displayed insisde the MenuButton.
    */
-  menuIcon?: IIconSlot;
+  menuIcon?: IFontIconSlot;
 }
 
 /**
  * {@docCategory Button}
  */
-export interface IMenuButton {
-  /**
-   * Sets focus to the MenuButton.
-   */
-  focus: () => void;
-}
+export interface IMenuButton extends IButton {}
 
 /**
  * {@docCategory Button}
  */
 export interface IMenuButtonProps
-  extends IMenuButtonSlots,
-    Pick<IButtonProps, 'href' | 'primary' | 'disabled' | 'checked' | 'allowDisabledFocus' | 'ariaLabel' | 'keytipProps'>,
+  extends ISlottableProps<IMenuButtonSlots>,
+    Pick<IButtonProps, 'href' | 'primary' | 'disabled' | 'checked' | 'allowDisabledFocus' | 'ariaLabel' | 'keytipProps' | 'uniqueId'>,
     IStyleableComponentProps<IMenuButtonProps, IMenuButtonTokens, IMenuButtonStyles>,
     IBaseProps<IMenuButton>,
     INativeButtonProps {

@@ -161,7 +161,13 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -177,6 +183,15 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  opacity: 1;
+                }
+                &::-ms-input-placeholder {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   color: #605e5c;
@@ -318,7 +333,13 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -334,6 +355,15 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #a19f9d;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  opacity: 1;
+                }
+                &::-ms-input-placeholder {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   color: #a19f9d;
@@ -472,7 +502,13 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -488,6 +524,15 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  opacity: 1;
+                }
+                &::-ms-input-placeholder {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   color: #605e5c;
@@ -632,7 +677,13 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -648,6 +699,15 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  opacity: 1;
+                }
+                &::-ms-input-placeholder {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   color: #605e5c;
@@ -767,7 +827,13 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -783,6 +849,15 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  opacity: 1;
+                }
+                &::-ms-input-placeholder {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   color: #605e5c;
@@ -885,12 +960,12 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                 position: relative;
               }
               &:hover {
-                border-color: #323130;
+                border-color: #a4262c;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
               }
-              &:focus, &:hover {
+              &:focus {
                 border-color: #a4262c;
               }
         >
@@ -926,7 +1001,13 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -942,6 +1023,15 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  opacity: 1;
+                }
+                &::-ms-input-placeholder {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   color: #605e5c;
@@ -1108,7 +1198,13 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -1124,6 +1220,15 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  opacity: 1;
+                }
+                &::-ms-input-placeholder {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   color: #605e5c;
@@ -1265,7 +1370,13 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -1281,6 +1392,15 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  opacity: 1;
+                }
+                &::-ms-input-placeholder {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   color: #605e5c;
@@ -1318,7 +1438,6 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   top: auto;
                 }
             data-icon-name="Calendar"
-            role="presentation"
           >
             
           </i>
@@ -1443,7 +1562,13 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -1459,6 +1584,15 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  opacity: 1;
+                }
+                &::-ms-input-placeholder {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   color: #605e5c;
@@ -1601,7 +1735,13 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -1617,6 +1757,15 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #a19f9d;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  opacity: 1;
+                }
+                &::-ms-input-placeholder {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   color: #a19f9d;

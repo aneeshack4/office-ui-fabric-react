@@ -34,15 +34,16 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
         border: 1px solid WindowText;
       }
       &:hover {
-        border-color: #201f1e;
+        border-color: #323130;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
         border-color: Highlight;
       }
-      &:hover $iconContainer {
+      &:hover .ms-SearchBox-iconContainer {
         color: #005a9e;
       }
   onFocusCapture={[Function]}
+  role="search"
 >
   <div
     aria-hidden={true}
@@ -78,7 +79,6 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
             transition: opacity 0.167s 0s;
           }
       data-icon-name="Search"
-      role="presentation"
     >
       
     </i>
@@ -109,20 +109,26 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
           padding-top: 0px;
           text-overflow: ellipsis;
         }
-        &::-ms-clear {
-          display: none;
-        }
         &::placeholder {
           color: #605e5c;
           opacity: 1;
         }
         &:-ms-input-placeholder {
           color: #605e5c;
+          opacity: 1;
+        }
+        &::-ms-input-placeholder {
+          color: #605e5c;
+          opacity: 1;
+        }
+        &::-ms-clear {
+          display: none;
         }
     id="SearchBox0"
     onChange={[Function]}
     onInput={[Function]}
     onKeyDown={[Function]}
+    role="searchbox"
     value=""
   />
 </div>
@@ -162,15 +168,16 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
         border: 1px solid WindowText;
       }
       &:hover {
-        border-color: #201f1e;
+        border-color: #323130;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
         border-color: Highlight;
       }
-      &:hover $iconContainer {
+      &:hover .ms-SearchBox-iconContainer {
         color: #005a9e;
       }
   onFocusCapture={[Function]}
+  role="search"
 >
   <div
     aria-hidden={true}
@@ -204,7 +211,6 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
             speak: none;
           }
       data-icon-name="Search"
-      role="presentation"
     >
       
     </i>
@@ -235,20 +241,26 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
           padding-top: 0px;
           text-overflow: ellipsis;
         }
-        &::-ms-clear {
-          display: none;
-        }
         &::placeholder {
           color: #605e5c;
           opacity: 1;
         }
         &:-ms-input-placeholder {
           color: #605e5c;
+          opacity: 1;
+        }
+        &::-ms-input-placeholder {
+          color: #605e5c;
+          opacity: 1;
+        }
+        &::-ms-clear {
+          display: none;
         }
     id="SearchBox5"
     onChange={[Function]}
     onInput={[Function]}
     onKeyDown={[Function]}
+    role="searchbox"
     value=""
   />
 </div>

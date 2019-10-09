@@ -249,7 +249,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   },
   docset: {},
   docx: {
-    extensions: ['doc', 'docm', 'docx', 'docb']
+    extensions: ['b', 'doc', 'docm', 'docx', 'docb']
   },
   dotx: {
     extensions: ['dot', 'dotm', 'dotx']
@@ -311,6 +311,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   mpt: {
     extensions: ['mpt']
   },
+  multiple: {},
   one: {
     extensions: ['one'] // this is a format for exported single - file notebook pages
   },

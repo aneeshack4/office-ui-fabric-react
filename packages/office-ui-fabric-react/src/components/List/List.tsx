@@ -1,14 +1,17 @@
 import * as React from 'react';
 import {
-  BaseComponent,
+  Async,
+  EventGroup,
   IRectangle,
+  IRenderFunction,
   css,
+  divProperties,
   findIndex,
   findScrollableParent,
-  getParent,
-  divProperties,
   getNativeProps,
-  IRenderFunction
+  getParent,
+  getWindow,
+  initializeComponentRef
 } from '../../Utilities';
 import { IList, IListProps, IPage, IPageProps, ScrollToMode } from './List.types';
 
@@ -79,7 +82,7 @@ const _measureScrollRect = _measurePageRect;
  * or forcing an update change cause pages to shrink/grow. When these operations occur, we increment a measureVersion
  * number, which we associate with cached measurements and use to determine if a remeasure should occur.
  */
-export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> implements IList {
+export class List<T = any> extends React.Component<IListProps<T>, IListState<T>> implements IList {
   public static defaultProps = {
     startIndex: 0,
     onRenderCell: (item: any, index: number, containsFocus: boolean) => <>{(item && item.name) || ''}</>,
@@ -93,7 +96,8 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
 
   private _root = React.createRef<HTMLDivElement>();
   private _surface = React.createRef<HTMLDivElement>();
-
+  private _async: Async;
+  private _events: EventGroup;
   private _estimatedPageHeight: number;
   private _totalEstimates: number;
   private _cachedPageHeights: {
@@ -115,6 +119,9 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
   // The visible rect that we're allowed to keep rendered. Pages outside of this rect will be removed.
   private _allowedRect: IRectangle;
 
+  // The rect that is visible to the user
+  private _visibleRect: IRectangle | undefined;
+
   // materialized rect around visible items, relative to surface
   private _materializedRect: IRectangle | null;
 
@@ -129,11 +136,15 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
   constructor(props: IListProps<T>) {
     super(props);
 
+    initializeComponentRef(this);
+
     this.state = {
       pages: [],
       isScrolling: false
     };
 
+    this._async = new Async(this);
+    this._events = new EventGroup(this);
     this._estimatedPageHeight = 0;
     this._totalEstimates = 0;
     this._requiredWindowsAhead = 0;
@@ -197,7 +208,7 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
       if (requestedIndexIsInPage) {
         // We have found the page. If the user provided a way to measure an individual item, we will try to scroll in just
         // the given item, otherwise we'll only bring the page into view
-        if (measureItem) {
+        if (measureItem && this._scrollElement) {
           const scrollRect = _measureScrollRect(this._scrollElement);
           const scrollWindow = {
             top: this._scrollElement.scrollTop,
@@ -304,7 +315,13 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
     }
   }
 
-  public componentWillReceiveProps(newProps: IListProps<T>): void {
+  public componentWillUnmount(): void {
+    this._async.dispose();
+    this._events.dispose();
+  }
+
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: IListProps<T>): void {
     if (
       newProps.items !== this.props.items ||
       newProps.renderCount !== this.props.renderCount ||
@@ -356,6 +373,13 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
     this._measureVersion++;
 
     super.forceUpdate();
+  }
+
+  /**
+   * Get the current height the list and it's pages.
+   */
+  public getTotalListHeight(): number {
+    return this._surfaceRect!.height;
   }
 
   public render(): JSX.Element {
@@ -779,6 +803,9 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
 
         newPage.top = pageTop;
         newPage.height = pageHeight;
+        if (this._visibleRect && this._visibleRect.bottom) {
+          newPage.isVisible = pageBottom >= this._visibleRect.top && pageTop <= this._visibleRect.bottom;
+        }
 
         pages.push(newPage);
 
@@ -838,7 +865,7 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
 
       const { itemCount = this._getItemCountForPage(itemIndex, visibleRect) } = pageData;
 
-      const { height = this._getPageHeight(itemIndex, itemCount, visibleRect) } = pageData;
+      const { height = this._getPageHeight(itemIndex, visibleRect, itemCount) } = pageData;
 
       return {
         itemCount: itemCount,
@@ -851,7 +878,7 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
 
       return {
         itemCount: itemCount,
-        height: this._getPageHeight(itemIndex, itemCount, visibleRect)
+        height: this._getPageHeight(itemIndex, visibleRect, itemCount)
       };
     }
   }
@@ -860,9 +887,9 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
    * Get the pixel height of a give page. Will use the props getPageHeight first, and if not provided, fallback to
    * cached height, or estimated page height, or default page height.
    */
-  private _getPageHeight(itemIndex: number, itemsPerPage: number, visibleRect: IRectangle): number {
+  private _getPageHeight(itemIndex: number, visibleRect: IRectangle, itemsPerPage: number): number {
     if (this.props.getPageHeight) {
-      return this.props.getPageHeight(itemIndex, visibleRect);
+      return this.props.getPageHeight(itemIndex, visibleRect, itemsPerPage);
     } else {
       const cachedHeight = this._cachedPageHeights[itemIndex];
 
@@ -953,18 +980,22 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
     // The first time the list gets rendered we need to calculate the rectangle. The width of the list is
     // used to calculate the width of the list items.
     const visibleTop = Math.max(0, -surfaceRect.top);
+    const win = getWindow(this._root.current);
     const visibleRect = {
       top: visibleTop,
       left: surfaceRect.left,
-      bottom: visibleTop + window.innerHeight,
+      bottom: visibleTop + win!.innerHeight,
       right: surfaceRect.right,
       width: surfaceRect.width,
-      height: window.innerHeight
+      height: win!.innerHeight
     };
 
     // The required/allowed rects are adjusted versions of the visible rect.
     this._requiredRect = _expandRect(visibleRect, this._requiredWindowsBehind, this._requiredWindowsAhead);
     this._allowedRect = _expandRect(visibleRect, renderedWindowsBehind!, renderedWindowsAhead!);
+
+    // store the visible rect for later use.
+    this._visibleRect = visibleRect;
   }
 }
 

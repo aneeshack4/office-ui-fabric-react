@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css, getDocument, classNamesFunction, styled } from 'office-ui-fabric-react/lib/Utilities';
+import { css, classNamesFunction, styled } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Stack, IStackProps } from 'office-ui-fabric-react/lib/Stack';
@@ -7,6 +7,8 @@ import { MessageBar } from 'office-ui-fabric-react/lib/MessageBar';
 import { EditSection } from '../EditSection/index';
 import { IComponentPageProps, IComponentPageStyleProps, IComponentPageStyles, IComponentPageSection } from './ComponentPage.types';
 import { getStyles } from './ComponentPage.styles';
+import { showOnlyExamples } from '../../utilities/showOnlyExamples';
+import { getCurrentUrl } from '../../utilities/getCurrentUrl';
 
 const getClassNames = classNamesFunction<IComponentPageStyleProps, IComponentPageStyles>();
 
@@ -37,21 +39,26 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
   };
 
   private _baseUrl: string;
+  private _showOnlyExamples: boolean;
   private _styles: IProcessedStyleSet<IComponentPageStyles>;
 
   constructor(props: IComponentPageProps) {
     super(props);
 
-    const doc = getDocument();
-    this._baseUrl = doc ? document.location.href : '';
+    this._baseUrl = getCurrentUrl();
+    this._showOnlyExamples = showOnlyExamples();
   }
 
   public render() {
     const { componentName, className, otherSections, styles, theme } = this.props;
 
+    const onlyExamples = this._showOnlyExamples;
+
     const classNames = (this._styles = getClassNames(styles, { theme }));
 
-    return (
+    return onlyExamples ? (
+      this._getVariants()
+    ) : (
       <div className={css(classNames.root, className)}>
         <div className={componentName}>
           {this._getPageHeader()}
@@ -59,6 +66,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
             {this._getOverview()}
             {this._getBestPractices()}
             {this._getVariants()}
+            {this._getAccessibility()}
             {this._getPropertiesTable()}
             {this._getFeedback()}
             {otherSections && otherSections.map(section => this._getSection(section))}
@@ -94,7 +102,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
     ].filter(section => !!section) as Array<{ title: string }>;
 
     return (
-      <Stack horizontal maxWidth="100%" wrap tokens={{ childrenGap: '5px 40px' }} className={classNames.navigation}>
+      <Stack horizontal wrap tokens={{ childrenGap: '5px 40px', maxWidth: '100%' }} className={classNames.navigation}>
         {sections.map(section => (
           <Link key={section.title} href={this._baseUrl + '#' + _idFromSectionTitle(section.title)} className={classNames.headerLink}>
             {section.title}
@@ -224,6 +232,19 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
         editUrl: this._getURL('Overview', editOverviewUrl),
         wrapperClass: this._styles.overviewSection,
         titleClass: this._styles.overviewHeading
+      });
+    }
+
+    return undefined;
+  }
+
+  private _getAccessibility(): JSX.Element | undefined {
+    const { accessibility, editOverviewUrl } = this.props;
+    if (accessibility) {
+      return this._getSection({
+        title: 'Accessibility',
+        section: accessibility,
+        editUrl: this._getURL('Accessibility', editOverviewUrl)
       });
     }
 

@@ -8,6 +8,7 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { classNamesFunction } from '../../Utilities';
 import { CommandBarButton, IButtonProps } from '../../Button';
 import { TooltipHost } from '../../Tooltip';
+import { IComponentAs } from '@uifabric/utilities';
 
 const getClassNames = classNamesFunction<ICommandBarStyleProps, ICommandBarStyles>();
 
@@ -52,6 +53,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       farItems,
       styles,
       theme,
+      dataDidRender,
       onReduceData = this._onReduceData,
       onGrowData = this._onGrowData
     } = this.props;
@@ -74,6 +76,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
         onReduceData={onReduceData}
         onGrowData={onGrowData}
         onRenderData={this._onRenderData}
+        dataDidRender={dataDidRender}
       />
     );
   }
@@ -154,15 +157,15 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
   };
 
   private _commandButton = (item: ICommandBarItemProps, props: ICommandBarItemProps): JSX.Element => {
-    if (this.props.buttonAs) {
-      const Type = this.props.buttonAs;
-      return <Type {...(props as IButtonProps)} defaultRender={CommandBarButton} />;
-    }
-    if (item.commandBarButtonAs) {
-      const Type = item.commandBarButtonAs;
-      return <Type {...(props as ICommandBarItemProps)} />;
-    }
-    return <CommandBarButton {...(props as IButtonProps)} defaultRender={CommandBarButton} />;
+    const ButtonAs = this.props.buttonAs as (IComponentAs<ICommandBarItemProps> | undefined);
+    const CommandBarButtonAs = item.commandBarButtonAs as (IComponentAs<ICommandBarItemProps> | undefined);
+    const DefaultButtonAs = (CommandBarButton as {}) as IComponentAs<ICommandBarItemProps>;
+
+    // The prop types between these three possible implementations overlap enough that a force-cast is safe.
+    const Type = ButtonAs || CommandBarButtonAs || DefaultButtonAs;
+
+    // Always pass the default implementation to the override so it may be composed.
+    return <Type {...props as ICommandBarItemProps} defaultRender={DefaultButtonAs} />;
   };
 
   private _onButtonClick(item: ICommandBarItemProps): (ev: React.MouseEvent<HTMLButtonElement>) => void {
@@ -196,7 +199,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       menuIconProps: { iconName: 'More', ...overflowButtonProps.menuIconProps }
     };
 
-    return <OverflowButtonType {...(overflowProps as IButtonProps)} />;
+    return <OverflowButtonType {...overflowProps as IButtonProps} />;
   };
 
   private _computeCacheKey(data: ICommandBarData): string {

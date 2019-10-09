@@ -1,6 +1,225 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 13 Jun 2019 00:24:48 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Oct 2019 23:14:46 GMT and should not be manually modified.
+
+## 7.5.4
+Thu, 03 Oct 2019 23:14:46 GMT
+
+### Patches
+
+- Fixes publish issue from beachball (odbuild@microsoft.com)
+## 7.5.2
+Thu, 03 Oct 2019 01:14:35 GMT
+
+### Patches
+
+- Bundle React even in serve mode for more representative testing environment (elcraig@microsoft.com)
+- Adding iOS NavBar to website docs. (emlynam@microsoft.com)
+## 7.5.1
+Mon, 30 Sep 2019 12:35:16 GMT
+
+### Patches
+
+- Don't load minified editor files (elcraig@microsoft.com)
+## 7.5.0
+Fri, 20 Sep 2019 12:34:28 GMT
+
+### Minor changes
+
+- Website: Split Brand icons page into Brand Icons and File Type Icons pages (marygans@microsoft.com)
+## 7.4.8
+Thu, 19 Sep 2019 13:05:24 GMT
+
+### Patches
+
+- Use new way of consuming Monaco bundle (elcraig@microsoft.com)
+## 7.4.7
+Thu, 12 Sep 2019 12:34:15 GMT
+
+### Patches
+
+- Update readme and fix minor IE compat issue (elcraig@microsoft.com)
+## 7.4.6
+Mon, 09 Sep 2019 21:43:18 GMT
+
+### Patches
+
+- updated docs for BottomSheet and Drawer (willdo@microsoft.com)
+## 7.4.5
+Fri, 06 Sep 2019 12:34:51 GMT
+
+### Patches
+
+- Hacked an examplecard msicon override for a specific DetailsList Drag and Drop page in fabric website (kchau@microsoft.com)
+## 7.4.4
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.4.3
+Mon, 02 Sep 2019 12:33:56 GMT
+
+### Patches
+
+- Add PopupMenu and BottomSheet to mobile docs. (emlynam@microsoft.com)
+- Add PopupMenu title (emlynam@microsoft.com)
+## 7.4.2
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Get rid of monaco-editor-webpack-plugin (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+
+## 7.4.1
+Wed, 21 Aug 2019 12:34:09 GMT
+
+### Patches
+
+- Use toggles for button example page knobs (elcraig@microsoft.com)
+
+## 7.4.0
+Thu, 15 Aug 2019 12:30:43 GMT
+
+### Minor changes
+
+- Rename deprecated React lifecycle functions to prevent development mode warnings in React 16.9. (jagore@microsoft.com)
+
+### Patches
+
+- Card: Showing examples on demo page and website (Humberto.Morimoto@microsoft.com)
+
+## 7.3.2
+Thu, 08 Aug 2019 12:32:41 GMT
+
+### Patches
+
+- Update webpack configs to make Monaco work cross-domain (elcraig@microsoft.com)
+- Fix some markdown bookmarks to enable click navigation to the bookmarked sections. (vibraga@microsoft.com)
+
+## 7.3.1
+Wed, 07 Aug 2019 12:32:28 GMT
+
+### Patches
+
+- Add customization section to Typography pages (naethell@microsoft.com)
+- Fix Keytips demo page by adding a KeytipLayer (keyou@microsoft.com)
+
+## 7.3.0
+Fri, 02 Aug 2019 12:33:29 GMT
+
+### Minor changes
+
+- Website changes to work with monaco editor state management (t-nikaz@microsoft.com)
+
+## 7.2.9
+Wed, 24 Jul 2019 12:27:56 GMT
+
+### Patches
+
+- Update colors implementation info (elcraig@microsoft.com)
+
+## 7.2.8
+Mon, 22 Jul 2019 12:28:42 GMT
+
+### Patches
+
+- Fix IE 11 incompatible syntax (elcraig@microsoft.com)
+
+## 7.2.7
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+
+## 7.2.5
+Tue, 09 Jul 2019 17:34:38 GMT
+
+### Patches
+
+- Fix website version selection and delete stray Animate file (elcraig@microsoft.com)
+
+## 7.2.4
+Wed, 03 Jul 2019 12:30:55 GMT
+
+### Patches
+
+- DetailsList cell update animation (inateeg@microsoft.com)
+
+## 7.2.3
+Tue, 02 Jul 2019 12:29:06 GMT
+
+### Patches
+
+- Add pivot for Fabric Icons page
+
+## 7.2.2
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
+
+## 7.2.1
+Thu, 27 Jun 2019 22:14:22 GMT
+
+### Patches
+
+- Add fabric 7 to website version selector
+
+## 7.2.0
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Minor changes
+
+- making all getting started links point to microsoft rather than kenotron
+
+## 7.1.6
+Mon, 24 Jun 2019 23:11:20 GMT
+
+### Patches
+
+- Update website for Fabric 7
+
+## 7.1.5
+Thu, 20 Jun 2019 12:27:38 GMT
+
+### Patches
+
+- Renamed instances of "Microsoft UI Fabric" to "UI Fabric"
+
+## 7.1.4
+Wed, 19 Jun 2019 12:27:03 GMT
+
+### Patches
+
+- Get rid of references to _exampleStyles.scss
+
+## 7.1.3
+Tue, 18 Jun 2019 19:00:04 GMT
+
+### Patches
+
+- Mobile: Added source code links, removed generic library link.
+
+## 7.1.2
+Tue, 18 Jun 2019 12:26:19 GMT
+
+### Patches
+
+- Add overview and controls request sections to mobile pages.
+- Add theme slots page
+- Add links to documentation pages.
+
+## 7.1.1
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Add more mobile docs, update screenshots.
+- Fix missing assets in production build.
 
 ## 7.1.0
 Thu, 13 Jun 2019 00:24:48 GMT
@@ -232,7 +451,7 @@ Tue, 23 Apr 2019 12:32:00 GMT
 
 ### Patches
 
-- Remove very old things from the website	
+- Remove very old things from the website
 
 ## 6.13.4
 Wed, 17 Apr 2019 12:33:35 GMT
@@ -474,7 +693,7 @@ Mon, 08 Oct 2018 12:24:15 GMT
 
 ### Patches
 
-- Moving tslint/prettier dependencies 
+- Moving tslint/prettier dependencies
 
 ## 6.4.6
 Tue, 02 Oct 2018 12:28:04 GMT

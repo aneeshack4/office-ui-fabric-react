@@ -44,7 +44,8 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     };
   }
 
-  public componentWillReceiveProps(nextProps: IPersonaCoinProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(nextProps: IPersonaCoinProps): void {
     if (nextProps.imageUrl !== this.props.imageUrl) {
       this.setState({
         isImageLoaded: false,
@@ -61,9 +62,11 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       coinSize,
       styles,
       imageUrl,
+      isOutOfOffice,
       onRenderCoin = this._onRenderCoin,
       onRenderInitials = this._onRenderInitials,
       presence,
+      presenceTitle,
       showInitialsUntilImageLoads,
       theme
     } = this.props;
@@ -76,7 +79,9 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
 
     const personaPresenceProps: IPersonaPresenceProps = {
       coinSize,
+      isOutOfOffice,
       presence,
+      presenceTitle,
       size,
       theme
     };

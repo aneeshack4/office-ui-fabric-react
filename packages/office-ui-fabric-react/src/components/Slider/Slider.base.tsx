@@ -10,6 +10,8 @@ export interface ISliderState {
 }
 
 const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
+export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
+
 export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implements ISlider {
   public static defaultProps: ISliderProps = {
     step: 1,
@@ -25,6 +27,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   private _sliderLine = React.createRef<HTMLDivElement>();
   private _thumb = React.createRef<HTMLSpanElement>();
   private _id: string;
+  private _onKeyDownTimer = -1;
 
   constructor(props: ISliderProps) {
     super(props);
@@ -80,7 +83,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     return (
       <div className={classNames.root}>
         {label && (
-          <Label className={classNames.titleLabel} {...(ariaLabel ? {} : { htmlFor: this._id })}>
+          <Label className={classNames.titleLabel} {...(ariaLabel ? {} : { htmlFor: this._id })} disabled={disabled}>
             {label}
           </Label>
         )}
@@ -136,7 +139,11 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
               )}
             </div>
           </div>
-          {showValue && <Label className={classNames.valueLabel}>{valueFormat ? valueFormat(value!) : value}</Label>}
+          {showValue && (
+            <Label className={classNames.valueLabel} disabled={disabled}>
+              {valueFormat ? valueFormat(value!) : value}
+            </Label>
+          )}
         </div>
       </div>
     ) as React.ReactElement<{}>;
@@ -246,8 +253,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     return currentPosition;
   }
   private _updateValue(value: number, renderedValue: number): void {
-    const { step } = this.props;
-
+    const { step, snapToStep } = this.props;
     let numDec = 0;
     if (isFinite(step!)) {
       while (Math.round(step! * Math.pow(10, numDec)) / Math.pow(10, numDec) !== step!) {
@@ -258,6 +264,10 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     // Make sure value has correct number of decimal places based on number of decimals in step
     const roundedValue = parseFloat(value.toFixed(numDec));
     const valueChanged = roundedValue !== this.state.value;
+
+    if (snapToStep) {
+      renderedValue = roundedValue;
+    }
 
     this.setState(
       {
@@ -295,10 +305,18 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       case getRTLSafeKeyCode(KeyCodes.left):
       case KeyCodes.down:
         diff = -(step as number);
+
+        this._clearOnKeyDownTimer();
+        this._setOnKeyDownTimer(event);
+
         break;
       case getRTLSafeKeyCode(KeyCodes.right):
       case KeyCodes.up:
         diff = step;
+
+        this._clearOnKeyDownTimer();
+        this._setOnKeyDownTimer(event);
+
         break;
 
       case KeyCodes.home:
@@ -319,5 +337,17 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
 
     event.preventDefault();
     event.stopPropagation();
+  };
+
+  private _clearOnKeyDownTimer = (): void => {
+    this._async.clearTimeout(this._onKeyDownTimer);
+  };
+
+  private _setOnKeyDownTimer = (event: KeyboardEvent): void => {
+    this._onKeyDownTimer = this._async.setTimeout(() => {
+      if (this.props.onChanged) {
+        this.props.onChanged(event, this.state.value as number);
+      }
+    }, ONKEYDOWN_TIMEOUT_DURATION);
   };
 }

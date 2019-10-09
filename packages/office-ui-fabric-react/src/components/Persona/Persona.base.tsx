@@ -42,7 +42,8 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       onRenderOptionalText = _onRenderOptionalText,
       onRenderPrimaryText = _onRenderPrimaryText,
       onRenderSecondaryText = _onRenderSecondaryText,
-      onRenderTertiaryText = _onRenderTertiaryText
+      onRenderTertiaryText = _onRenderTertiaryText,
+      onRenderPersonaCoin = this._onRenderPersonaCoin
     } = this.props;
     const size = this.props.size as PersonaSize;
 
@@ -60,10 +61,12 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       imageShouldStartVisible,
       imageUrl,
       initialsColor,
+      isOutOfOffice,
       onPhotoLoadingStateChange,
       onRenderCoin,
       onRenderInitials,
       presence,
+      presenceTitle,
       showInitialsUntilImageLoads,
       showSecondaryText,
       theme
@@ -83,9 +86,11 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       onRenderCoin,
       onRenderInitials,
       presence,
+      presenceTitle,
       showInitialsUntilImageLoads,
       size,
       text: this._getText(),
+      isOutOfOffice,
       ...coinProps
     };
 
@@ -110,7 +115,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
 
     return (
       <div {...divProps} className={classNames.root} style={coinSize ? { height: coinSize, minWidth: coinSize } : undefined}>
-        <PersonaCoin {...personaCoinProps} />
+        {onRenderPersonaCoin(personaCoinProps, this._onRenderPersonaCoin)}
         {(!hidePersonaDetails || (size === PersonaSize.size8 || size === PersonaSize.size10 || size === PersonaSize.tiny)) &&
           personaDetails}
       </div>
@@ -161,4 +166,8 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
         }
       : undefined;
   }
+
+  private _onRenderPersonaCoin = (props: IPersonaCoinProps): JSX.Element | null => {
+    return <PersonaCoin {...props} />;
+  };
 }

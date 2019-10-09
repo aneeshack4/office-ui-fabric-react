@@ -92,7 +92,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -102,18 +102,21 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
-        <div
+        <span
           className=
               ms-Button-textContainer
               {
+                display: block;
                 flex-grow: 1;
               }
         >
-          <div
+          <span
             className=
                 ms-Button-label
                 {
+                  display: block;
                   font-weight: 600;
                   line-height: 100%;
                   margin-bottom: 0;
@@ -124,9 +127,9 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
             id="id__0"
           >
             Add an item
-          </div>
-        </div>
-      </div>
+          </span>
+        </span>
+      </span>
     </button>
     <div
       className=
@@ -463,16 +466,16 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                   line-height: 42px;
                   min-width: 100%;
                   padding-bottom: 1px;
-                  padding-top: 1px;
+                  padding-top: 16px;
                   position: relative;
                   user-select: none;
                   vertical-align: top;
                   white-space: nowrap;
                 }
-                &:hover $check {
+                &:hover .ms-DetailsHeader-check {
                   opacity: 1;
                 }
-                & ms-TooltipHost $checkTooltip {
+                & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
                   display: block;
                 }
             data-automationid="DetailsHeader"
@@ -484,7 +487,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
             role="row"
             style={
               Object {
-                "minWidth": 0,
+                "minWidth": 200,
               }
             }
           >
@@ -536,16 +539,18 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
             >
               <span
                 className=
-
+                    ms-DetailsHeader-checkTooltip
 
               >
                 <div
                   aria-checked={false}
                   aria-describedby="header5-checkTooltip"
-                  aria-label="Toggle selection"
+                  aria-label="Toggle selection for all items"
                   className=
                       ms-DetailsRow-check
+                      ms-DetailsHeader-check
                       ms-DetailsRow-check--isHeader
+                      ms-Check-checkHost
                       {
                         height: 42px;
                       }
@@ -595,10 +600,6 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                         top: 1px;
                         z-index: 1;
                       }
-                      &:hover {
-                        opacity: 1;
-                      }
-
                   data-automationid="DetailsRowCheck"
                   data-is-focusable={true}
                   data-selection-toggle={true}
@@ -632,27 +633,41 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                           right: 1px;
                           top: 1px;
                         }
-                        $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                        .ms-Check-checkHost:hover & {
+                          opacity: 1;
+                        }
+                        .ms-Check-checkHost:focus & {
+                          opacity: 1;
+                        }
+                        &:hover {
+                          opacity: 1;
+                        }
+                        &:focus {
                           opacity: 1;
                         }
                   >
                     <i
                       aria-hidden={true}
                       className=
+                          ms-Icon
                           ms-Check-circle
+                          {
+                            display: inline-block;
+                          }
                           {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
-                            color: #605e5c;
-                            display: inline-block;
                             font-family: "FabricMDL2Icons";
-                            font-size: 18px;
                             font-style: normal;
                             font-weight: normal;
+                            speak: none;
+                          }
+                          {
+                            color: #605e5c;
+                            font-size: 18px;
                             height: 18px;
                             left: 0px;
                             position: absolute;
-                            speak: none;
                             text-align: center;
                             top: 0px;
                             vertical-align: middle;
@@ -669,21 +684,26 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                     <i
                       aria-hidden={true}
                       className=
+                          ms-Icon
                           ms-Check-check
+                          {
+                            display: inline-block;
+                          }
                           {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
-                            color: #605e5c;
-                            display: inline-block;
                             font-family: "FabricMDL2Icons";
-                            font-size: 16px;
                             font-style: normal;
                             font-weight: normal;
+                            speak: none;
+                          }
+                          {
+                            color: #605e5c;
+                            font-size: 16px;
                             height: 18px;
                             left: .5px;
                             opacity: 0;
                             position: absolute;
-                            speak: none;
                             text-align: center;
                             top: 0px;
                             vertical-align: middle;
@@ -705,6 +725,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
               </span>
             </div>
             <label
+              aria-hidden={true}
               className=
 
                   {
@@ -779,19 +800,25 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                   }
               data-is-focusable={true}
               onClick={[Function]}
+              role="button"
             >
               <i
                 aria-hidden={true}
                 className=
+                    ms-Icon
                     ms-DetailsHeader-collapseButton
+                    {
+                      display: inline-block;
+                    }
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      display: inline-block;
-                      font-family: "FabricMDL2Icons-2";
+                      font-family: "FabricMDL2Icons-3";
                       font-style: normal;
                       font-weight: normal;
                       speak: none;
+                    }
+                    {
                       transform-origin: 50% 50%;
                       transform: rotate(90deg);
                       transition: transform .1s linear;
@@ -974,7 +1001,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                     opacity: 1;
                     transition: opacity 0.3s linear;
                   }
-                  &$cellIsResizing:after {
+                  &.is-resizing:after {
                     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
                     opacity: 1;
                     transition: opacity 0.3s linear;
@@ -1151,7 +1178,6 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
             onFocus={[Function]}
             onKeyDown={[Function]}
             onMouseDownCapture={[Function]}
-            role="presentation"
           >
             <div
               className="ms-SelectionZone"
@@ -1242,14 +1268,15 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                 }
                                 &:hover {
                                   background: #f3f2f1;
+                                  color: #201f1e;
                                 }
-                                &:hover $check {
+                                &:hover .ms-GroupHeader-check {
                                   opacity: 1;
                                 }
-                                .ms-Fabric--isFocusVisible &:focus $check {
+                                .ms-Fabric--isFocusVisible &:focus .ms-GroupHeader-check {
                                   opacity: 1;
                                 }
-                                .ms-GroupedList-group.is-dropping > $root $dropIcon {
+                                & > .ms-GroupHeader .ms-GroupHeader-dropIcon {
                                   opacity: 1;
                                   transform: rotate(0.2deg) scale(1);
                                   transition-delay: 0.367s;
@@ -1257,7 +1284,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                                 cubic-bezier(0.075, 0.820, 0.165, 1.000) opacity 0.167s
                                                 cubic-bezier(0.390, 0.575, 0.565, 1.000);
                                 }
-                                .ms-GroupedList-group.is-dropping $check {
+                                .ms-GroupedList-group.is-dropping .ms-GroupHeader-check {
                                   opacity: 0;
                                 }
                             data-is-focusable={true}
@@ -1279,7 +1306,6 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                               onFocus={[Function]}
                               onKeyDown={[Function]}
                               onMouseDownCapture={[Function]}
-                              role="presentation"
                             >
                               <button
                                 aria-checked={false}
@@ -1353,27 +1379,41 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         right: 1px;
                                         top: 1px;
                                       }
-                                      $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                      .ms-Check-checkHost:hover & {
+                                        opacity: 1;
+                                      }
+                                      .ms-Check-checkHost:focus & {
+                                        opacity: 1;
+                                      }
+                                      &:hover {
+                                        opacity: 1;
+                                      }
+                                      &:focus {
                                         opacity: 1;
                                       }
                                 >
                                   <i
                                     aria-hidden={true}
                                     className=
+                                        ms-Icon
                                         ms-Check-circle
+                                        {
+                                          display: inline-block;
+                                        }
                                         {
                                           -moz-osx-font-smoothing: grayscale;
                                           -webkit-font-smoothing: antialiased;
-                                          color: #605e5c;
-                                          display: inline-block;
                                           font-family: "FabricMDL2Icons";
-                                          font-size: 18px;
                                           font-style: normal;
                                           font-weight: normal;
+                                          speak: none;
+                                        }
+                                        {
+                                          color: #605e5c;
+                                          font-size: 18px;
                                           height: 18px;
                                           left: 0px;
                                           position: absolute;
-                                          speak: none;
                                           text-align: center;
                                           top: 0px;
                                           vertical-align: middle;
@@ -1390,21 +1430,26 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                   <i
                                     aria-hidden={true}
                                     className=
+                                        ms-Icon
                                         ms-Check-check
+                                        {
+                                          display: inline-block;
+                                        }
                                         {
                                           -moz-osx-font-smoothing: grayscale;
                                           -webkit-font-smoothing: antialiased;
-                                          color: #605e5c;
-                                          display: inline-block;
                                           font-family: "FabricMDL2Icons";
-                                          font-size: 16px;
                                           font-style: normal;
                                           font-weight: normal;
+                                          speak: none;
+                                        }
+                                        {
+                                          color: #605e5c;
+                                          font-size: 16px;
                                           height: 18px;
                                           left: .5px;
                                           opacity: 0;
                                           position: absolute;
-                                          speak: none;
                                           text-align: center;
                                           top: 0px;
                                           vertical-align: middle;
@@ -1456,7 +1501,6 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         speak: none;
                                       }
                                   data-icon-name="Tag"
-                                  role="presentation"
                                 >
                                   
                                 </i>
@@ -1517,7 +1561,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
                                         display: inline-block;
-                                        font-family: "FabricMDL2Icons-2";
+                                        font-family: "FabricMDL2Icons-3";
                                         font-style: normal;
                                         font-weight: normal;
                                         speak: none;
@@ -1526,7 +1570,6 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         transition: transform .1s linear;
                                       }
                                   data-icon-name="ChevronRightMed"
-                                  role="presentation"
                                 >
                                   
                                 </i>
@@ -1647,26 +1690,24 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         &:hover .is-row-header {
                                           color: #201f1e;
                                         }
-                                        &:hover $check {
+                                        &:hover .ms-DetailsRow-check {
                                           opacity: 1;
                                         }
-                                        .ms-Fabric--isFocusVisible &:focus $check {
+                                        .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                           opacity: 1;
                                         }
                                     data-automationid="DetailsRow"
                                     data-focuszone-id="FocusZone14"
-                                    data-is-draggable={false}
                                     data-is-focusable={true}
                                     data-item-index={0}
                                     data-selection-index={0}
-                                    draggable={false}
                                     onFocus={[Function]}
                                     onKeyDown={[Function]}
                                     onMouseDownCapture={[Function]}
                                     role="row"
                                     style={
                                       Object {
-                                        "minWidth": 0,
+                                        "minWidth": 200,
                                       }
                                     }
                                   >
@@ -1721,8 +1762,10 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     >
                                       <div
                                         aria-checked={false}
+                                        aria-label="Row checkbox"
                                         className=
                                             ms-DetailsRow-check
+                                            ms-Check-checkHost
 
                                             {
                                               -moz-osx-font-smoothing: grayscale;
@@ -1767,10 +1810,6 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                               top: 1px;
                                               z-index: 1;
                                             }
-                                            &:hover {
-                                              opacity: 1;
-                                            }
-
                                         data-automationid="DetailsRowCheck"
                                         data-selection-toggle={true}
                                         role="checkbox"
@@ -1802,27 +1841,41 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                                 right: 1px;
                                                 top: 1px;
                                               }
-                                              $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                              .ms-Check-checkHost:hover & {
+                                                opacity: 1;
+                                              }
+                                              .ms-Check-checkHost:focus & {
+                                                opacity: 1;
+                                              }
+                                              &:hover {
+                                                opacity: 1;
+                                              }
+                                              &:focus {
                                                 opacity: 1;
                                               }
                                         >
                                           <i
                                             aria-hidden={true}
                                             className=
+                                                ms-Icon
                                                 ms-Check-circle
+                                                {
+                                                  display: inline-block;
+                                                }
                                                 {
                                                   -moz-osx-font-smoothing: grayscale;
                                                   -webkit-font-smoothing: antialiased;
-                                                  color: #605e5c;
-                                                  display: inline-block;
                                                   font-family: "FabricMDL2Icons";
-                                                  font-size: 18px;
                                                   font-style: normal;
                                                   font-weight: normal;
+                                                  speak: none;
+                                                }
+                                                {
+                                                  color: #605e5c;
+                                                  font-size: 18px;
                                                   height: 18px;
                                                   left: 0px;
                                                   position: absolute;
-                                                  speak: none;
                                                   text-align: center;
                                                   top: 0px;
                                                   vertical-align: middle;
@@ -1839,21 +1892,26 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                           <i
                                             aria-hidden={true}
                                             className=
+                                                ms-Icon
                                                 ms-Check-check
+                                                {
+                                                  display: inline-block;
+                                                }
                                                 {
                                                   -moz-osx-font-smoothing: grayscale;
                                                   -webkit-font-smoothing: antialiased;
-                                                  color: #605e5c;
-                                                  display: inline-block;
                                                   font-family: "FabricMDL2Icons";
-                                                  font-size: 16px;
                                                   font-style: normal;
                                                   font-weight: normal;
+                                                  speak: none;
+                                                }
+                                                {
+                                                  color: #605e5c;
+                                                  font-size: 16px;
                                                   height: 18px;
                                                   left: .5px;
                                                   opacity: 0;
                                                   position: absolute;
-                                                  speak: none;
                                                   text-align: center;
                                                   top: 0px;
                                                   vertical-align: middle;
@@ -2099,26 +2157,24 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         &:hover .is-row-header {
                                           color: #201f1e;
                                         }
-                                        &:hover $check {
+                                        &:hover .ms-DetailsRow-check {
                                           opacity: 1;
                                         }
-                                        .ms-Fabric--isFocusVisible &:focus $check {
+                                        .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                           opacity: 1;
                                         }
                                     data-automationid="DetailsRow"
                                     data-focuszone-id="FocusZone15"
-                                    data-is-draggable={false}
                                     data-is-focusable={true}
                                     data-item-index={1}
                                     data-selection-index={1}
-                                    draggable={false}
                                     onFocus={[Function]}
                                     onKeyDown={[Function]}
                                     onMouseDownCapture={[Function]}
                                     role="row"
                                     style={
                                       Object {
-                                        "minWidth": 0,
+                                        "minWidth": 200,
                                       }
                                     }
                                   >
@@ -2173,8 +2229,10 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     >
                                       <div
                                         aria-checked={false}
+                                        aria-label="Row checkbox"
                                         className=
                                             ms-DetailsRow-check
+                                            ms-Check-checkHost
 
                                             {
                                               -moz-osx-font-smoothing: grayscale;
@@ -2219,10 +2277,6 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                               top: 1px;
                                               z-index: 1;
                                             }
-                                            &:hover {
-                                              opacity: 1;
-                                            }
-
                                         data-automationid="DetailsRowCheck"
                                         data-selection-toggle={true}
                                         role="checkbox"
@@ -2254,27 +2308,41 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                                 right: 1px;
                                                 top: 1px;
                                               }
-                                              $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                              .ms-Check-checkHost:hover & {
+                                                opacity: 1;
+                                              }
+                                              .ms-Check-checkHost:focus & {
+                                                opacity: 1;
+                                              }
+                                              &:hover {
+                                                opacity: 1;
+                                              }
+                                              &:focus {
                                                 opacity: 1;
                                               }
                                         >
                                           <i
                                             aria-hidden={true}
                                             className=
+                                                ms-Icon
                                                 ms-Check-circle
+                                                {
+                                                  display: inline-block;
+                                                }
                                                 {
                                                   -moz-osx-font-smoothing: grayscale;
                                                   -webkit-font-smoothing: antialiased;
-                                                  color: #605e5c;
-                                                  display: inline-block;
                                                   font-family: "FabricMDL2Icons";
-                                                  font-size: 18px;
                                                   font-style: normal;
                                                   font-weight: normal;
+                                                  speak: none;
+                                                }
+                                                {
+                                                  color: #605e5c;
+                                                  font-size: 18px;
                                                   height: 18px;
                                                   left: 0px;
                                                   position: absolute;
-                                                  speak: none;
                                                   text-align: center;
                                                   top: 0px;
                                                   vertical-align: middle;
@@ -2291,21 +2359,26 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                           <i
                                             aria-hidden={true}
                                             className=
+                                                ms-Icon
                                                 ms-Check-check
+                                                {
+                                                  display: inline-block;
+                                                }
                                                 {
                                                   -moz-osx-font-smoothing: grayscale;
                                                   -webkit-font-smoothing: antialiased;
-                                                  color: #605e5c;
-                                                  display: inline-block;
                                                   font-family: "FabricMDL2Icons";
-                                                  font-size: 16px;
                                                   font-style: normal;
                                                   font-weight: normal;
+                                                  speak: none;
+                                                }
+                                                {
+                                                  color: #605e5c;
+                                                  font-size: 16px;
                                                   height: 18px;
                                                   left: .5px;
                                                   opacity: 0;
                                                   position: absolute;
-                                                  speak: none;
                                                   text-align: center;
                                                   top: 0px;
                                                   vertical-align: middle;
@@ -2539,14 +2612,15 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                 }
                                 &:hover {
                                   background: #f3f2f1;
+                                  color: #201f1e;
                                 }
-                                &:hover $check {
+                                &:hover .ms-GroupHeader-check {
                                   opacity: 1;
                                 }
-                                .ms-Fabric--isFocusVisible &:focus $check {
+                                .ms-Fabric--isFocusVisible &:focus .ms-GroupHeader-check {
                                   opacity: 1;
                                 }
-                                .ms-GroupedList-group.is-dropping > $root $dropIcon {
+                                & > .ms-GroupHeader .ms-GroupHeader-dropIcon {
                                   opacity: 1;
                                   transform: rotate(0.2deg) scale(1);
                                   transition-delay: 0.367s;
@@ -2554,7 +2628,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                                 cubic-bezier(0.075, 0.820, 0.165, 1.000) opacity 0.167s
                                                 cubic-bezier(0.390, 0.575, 0.565, 1.000);
                                 }
-                                .ms-GroupedList-group.is-dropping $check {
+                                .ms-GroupedList-group.is-dropping .ms-GroupHeader-check {
                                   opacity: 0;
                                 }
                             data-is-focusable={true}
@@ -2576,7 +2650,6 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                               onFocus={[Function]}
                               onKeyDown={[Function]}
                               onMouseDownCapture={[Function]}
-                              role="presentation"
                             >
                               <button
                                 aria-checked={false}
@@ -2650,27 +2723,41 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         right: 1px;
                                         top: 1px;
                                       }
-                                      $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                      .ms-Check-checkHost:hover & {
+                                        opacity: 1;
+                                      }
+                                      .ms-Check-checkHost:focus & {
+                                        opacity: 1;
+                                      }
+                                      &:hover {
+                                        opacity: 1;
+                                      }
+                                      &:focus {
                                         opacity: 1;
                                       }
                                 >
                                   <i
                                     aria-hidden={true}
                                     className=
+                                        ms-Icon
                                         ms-Check-circle
+                                        {
+                                          display: inline-block;
+                                        }
                                         {
                                           -moz-osx-font-smoothing: grayscale;
                                           -webkit-font-smoothing: antialiased;
-                                          color: #605e5c;
-                                          display: inline-block;
                                           font-family: "FabricMDL2Icons";
-                                          font-size: 18px;
                                           font-style: normal;
                                           font-weight: normal;
+                                          speak: none;
+                                        }
+                                        {
+                                          color: #605e5c;
+                                          font-size: 18px;
                                           height: 18px;
                                           left: 0px;
                                           position: absolute;
-                                          speak: none;
                                           text-align: center;
                                           top: 0px;
                                           vertical-align: middle;
@@ -2687,21 +2774,26 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                   <i
                                     aria-hidden={true}
                                     className=
+                                        ms-Icon
                                         ms-Check-check
+                                        {
+                                          display: inline-block;
+                                        }
                                         {
                                           -moz-osx-font-smoothing: grayscale;
                                           -webkit-font-smoothing: antialiased;
-                                          color: #605e5c;
-                                          display: inline-block;
                                           font-family: "FabricMDL2Icons";
-                                          font-size: 16px;
                                           font-style: normal;
                                           font-weight: normal;
+                                          speak: none;
+                                        }
+                                        {
+                                          color: #605e5c;
+                                          font-size: 16px;
                                           height: 18px;
                                           left: .5px;
                                           opacity: 0;
                                           position: absolute;
-                                          speak: none;
                                           text-align: center;
                                           top: 0px;
                                           vertical-align: middle;
@@ -2753,7 +2845,6 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         speak: none;
                                       }
                                   data-icon-name="Tag"
-                                  role="presentation"
                                 >
                                   
                                 </i>
@@ -2814,7 +2905,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
                                         display: inline-block;
-                                        font-family: "FabricMDL2Icons-2";
+                                        font-family: "FabricMDL2Icons-3";
                                         font-style: normal;
                                         font-weight: normal;
                                         speak: none;
@@ -2823,7 +2914,6 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         transition: transform .1s linear;
                                       }
                                   data-icon-name="ChevronRightMed"
-                                  role="presentation"
                                 >
                                   
                                 </i>
@@ -2924,14 +3014,15 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                 }
                                 &:hover {
                                   background: #f3f2f1;
+                                  color: #201f1e;
                                 }
-                                &:hover $check {
+                                &:hover .ms-GroupHeader-check {
                                   opacity: 1;
                                 }
-                                .ms-Fabric--isFocusVisible &:focus $check {
+                                .ms-Fabric--isFocusVisible &:focus .ms-GroupHeader-check {
                                   opacity: 1;
                                 }
-                                .ms-GroupedList-group.is-dropping > $root $dropIcon {
+                                & > .ms-GroupHeader .ms-GroupHeader-dropIcon {
                                   opacity: 1;
                                   transform: rotate(0.2deg) scale(1);
                                   transition-delay: 0.367s;
@@ -2939,7 +3030,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                                 cubic-bezier(0.075, 0.820, 0.165, 1.000) opacity 0.167s
                                                 cubic-bezier(0.390, 0.575, 0.565, 1.000);
                                 }
-                                .ms-GroupedList-group.is-dropping $check {
+                                .ms-GroupedList-group.is-dropping .ms-GroupHeader-check {
                                   opacity: 0;
                                 }
                             data-is-focusable={true}
@@ -2961,7 +3052,6 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                               onFocus={[Function]}
                               onKeyDown={[Function]}
                               onMouseDownCapture={[Function]}
-                              role="presentation"
                             >
                               <button
                                 aria-checked={false}
@@ -3035,27 +3125,41 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         right: 1px;
                                         top: 1px;
                                       }
-                                      $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                      .ms-Check-checkHost:hover & {
+                                        opacity: 1;
+                                      }
+                                      .ms-Check-checkHost:focus & {
+                                        opacity: 1;
+                                      }
+                                      &:hover {
+                                        opacity: 1;
+                                      }
+                                      &:focus {
                                         opacity: 1;
                                       }
                                 >
                                   <i
                                     aria-hidden={true}
                                     className=
+                                        ms-Icon
                                         ms-Check-circle
+                                        {
+                                          display: inline-block;
+                                        }
                                         {
                                           -moz-osx-font-smoothing: grayscale;
                                           -webkit-font-smoothing: antialiased;
-                                          color: #605e5c;
-                                          display: inline-block;
                                           font-family: "FabricMDL2Icons";
-                                          font-size: 18px;
                                           font-style: normal;
                                           font-weight: normal;
+                                          speak: none;
+                                        }
+                                        {
+                                          color: #605e5c;
+                                          font-size: 18px;
                                           height: 18px;
                                           left: 0px;
                                           position: absolute;
-                                          speak: none;
                                           text-align: center;
                                           top: 0px;
                                           vertical-align: middle;
@@ -3072,21 +3176,26 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                   <i
                                     aria-hidden={true}
                                     className=
+                                        ms-Icon
                                         ms-Check-check
+                                        {
+                                          display: inline-block;
+                                        }
                                         {
                                           -moz-osx-font-smoothing: grayscale;
                                           -webkit-font-smoothing: antialiased;
-                                          color: #605e5c;
-                                          display: inline-block;
                                           font-family: "FabricMDL2Icons";
-                                          font-size: 16px;
                                           font-style: normal;
                                           font-weight: normal;
+                                          speak: none;
+                                        }
+                                        {
+                                          color: #605e5c;
+                                          font-size: 16px;
                                           height: 18px;
                                           left: .5px;
                                           opacity: 0;
                                           position: absolute;
-                                          speak: none;
                                           text-align: center;
                                           top: 0px;
                                           vertical-align: middle;
@@ -3138,7 +3247,6 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         speak: none;
                                       }
                                   data-icon-name="Tag"
-                                  role="presentation"
                                 >
                                   
                                 </i>
@@ -3199,7 +3307,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
                                         display: inline-block;
-                                        font-family: "FabricMDL2Icons-2";
+                                        font-family: "FabricMDL2Icons-3";
                                         font-style: normal;
                                         font-weight: normal;
                                         speak: none;
@@ -3208,7 +3316,6 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         transition: transform .1s linear;
                                       }
                                   data-icon-name="ChevronRightMed"
-                                  role="presentation"
                                 >
                                   
                                 </i>
@@ -3329,26 +3436,24 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         &:hover .is-row-header {
                                           color: #201f1e;
                                         }
-                                        &:hover $check {
+                                        &:hover .ms-DetailsRow-check {
                                           opacity: 1;
                                         }
-                                        .ms-Fabric--isFocusVisible &:focus $check {
+                                        .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                           opacity: 1;
                                         }
                                     data-automationid="DetailsRow"
                                     data-focuszone-id="FocusZone16"
-                                    data-is-draggable={false}
                                     data-is-focusable={true}
                                     data-item-index={2}
                                     data-selection-index={2}
-                                    draggable={false}
                                     onFocus={[Function]}
                                     onKeyDown={[Function]}
                                     onMouseDownCapture={[Function]}
                                     role="row"
                                     style={
                                       Object {
-                                        "minWidth": 0,
+                                        "minWidth": 200,
                                       }
                                     }
                                   >
@@ -3403,8 +3508,10 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     >
                                       <div
                                         aria-checked={false}
+                                        aria-label="Row checkbox"
                                         className=
                                             ms-DetailsRow-check
+                                            ms-Check-checkHost
 
                                             {
                                               -moz-osx-font-smoothing: grayscale;
@@ -3449,10 +3556,6 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                               top: 1px;
                                               z-index: 1;
                                             }
-                                            &:hover {
-                                              opacity: 1;
-                                            }
-
                                         data-automationid="DetailsRowCheck"
                                         data-selection-toggle={true}
                                         role="checkbox"
@@ -3484,27 +3587,41 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                                 right: 1px;
                                                 top: 1px;
                                               }
-                                              $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                              .ms-Check-checkHost:hover & {
+                                                opacity: 1;
+                                              }
+                                              .ms-Check-checkHost:focus & {
+                                                opacity: 1;
+                                              }
+                                              &:hover {
+                                                opacity: 1;
+                                              }
+                                              &:focus {
                                                 opacity: 1;
                                               }
                                         >
                                           <i
                                             aria-hidden={true}
                                             className=
+                                                ms-Icon
                                                 ms-Check-circle
+                                                {
+                                                  display: inline-block;
+                                                }
                                                 {
                                                   -moz-osx-font-smoothing: grayscale;
                                                   -webkit-font-smoothing: antialiased;
-                                                  color: #605e5c;
-                                                  display: inline-block;
                                                   font-family: "FabricMDL2Icons";
-                                                  font-size: 18px;
                                                   font-style: normal;
                                                   font-weight: normal;
+                                                  speak: none;
+                                                }
+                                                {
+                                                  color: #605e5c;
+                                                  font-size: 18px;
                                                   height: 18px;
                                                   left: 0px;
                                                   position: absolute;
-                                                  speak: none;
                                                   text-align: center;
                                                   top: 0px;
                                                   vertical-align: middle;
@@ -3521,21 +3638,26 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                           <i
                                             aria-hidden={true}
                                             className=
+                                                ms-Icon
                                                 ms-Check-check
+                                                {
+                                                  display: inline-block;
+                                                }
                                                 {
                                                   -moz-osx-font-smoothing: grayscale;
                                                   -webkit-font-smoothing: antialiased;
-                                                  color: #605e5c;
-                                                  display: inline-block;
                                                   font-family: "FabricMDL2Icons";
-                                                  font-size: 16px;
                                                   font-style: normal;
                                                   font-weight: normal;
+                                                  speak: none;
+                                                }
+                                                {
+                                                  color: #605e5c;
+                                                  font-size: 16px;
                                                   height: 18px;
                                                   left: .5px;
                                                   opacity: 0;
                                                   position: absolute;
-                                                  speak: none;
                                                   text-align: center;
                                                   top: 0px;
                                                   vertical-align: middle;
@@ -3781,26 +3903,24 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         &:hover .is-row-header {
                                           color: #201f1e;
                                         }
-                                        &:hover $check {
+                                        &:hover .ms-DetailsRow-check {
                                           opacity: 1;
                                         }
-                                        .ms-Fabric--isFocusVisible &:focus $check {
+                                        .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                           opacity: 1;
                                         }
                                     data-automationid="DetailsRow"
                                     data-focuszone-id="FocusZone17"
-                                    data-is-draggable={false}
                                     data-is-focusable={true}
                                     data-item-index={3}
                                     data-selection-index={3}
-                                    draggable={false}
                                     onFocus={[Function]}
                                     onKeyDown={[Function]}
                                     onMouseDownCapture={[Function]}
                                     role="row"
                                     style={
                                       Object {
-                                        "minWidth": 0,
+                                        "minWidth": 200,
                                       }
                                     }
                                   >
@@ -3855,8 +3975,10 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     >
                                       <div
                                         aria-checked={false}
+                                        aria-label="Row checkbox"
                                         className=
                                             ms-DetailsRow-check
+                                            ms-Check-checkHost
 
                                             {
                                               -moz-osx-font-smoothing: grayscale;
@@ -3901,10 +4023,6 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                               top: 1px;
                                               z-index: 1;
                                             }
-                                            &:hover {
-                                              opacity: 1;
-                                            }
-
                                         data-automationid="DetailsRowCheck"
                                         data-selection-toggle={true}
                                         role="checkbox"
@@ -3936,27 +4054,41 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                                 right: 1px;
                                                 top: 1px;
                                               }
-                                              $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                              .ms-Check-checkHost:hover & {
+                                                opacity: 1;
+                                              }
+                                              .ms-Check-checkHost:focus & {
+                                                opacity: 1;
+                                              }
+                                              &:hover {
+                                                opacity: 1;
+                                              }
+                                              &:focus {
                                                 opacity: 1;
                                               }
                                         >
                                           <i
                                             aria-hidden={true}
                                             className=
+                                                ms-Icon
                                                 ms-Check-circle
+                                                {
+                                                  display: inline-block;
+                                                }
                                                 {
                                                   -moz-osx-font-smoothing: grayscale;
                                                   -webkit-font-smoothing: antialiased;
-                                                  color: #605e5c;
-                                                  display: inline-block;
                                                   font-family: "FabricMDL2Icons";
-                                                  font-size: 18px;
                                                   font-style: normal;
                                                   font-weight: normal;
+                                                  speak: none;
+                                                }
+                                                {
+                                                  color: #605e5c;
+                                                  font-size: 18px;
                                                   height: 18px;
                                                   left: 0px;
                                                   position: absolute;
-                                                  speak: none;
                                                   text-align: center;
                                                   top: 0px;
                                                   vertical-align: middle;
@@ -3973,21 +4105,26 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                           <i
                                             aria-hidden={true}
                                             className=
+                                                ms-Icon
                                                 ms-Check-check
+                                                {
+                                                  display: inline-block;
+                                                }
                                                 {
                                                   -moz-osx-font-smoothing: grayscale;
                                                   -webkit-font-smoothing: antialiased;
-                                                  color: #605e5c;
-                                                  display: inline-block;
                                                   font-family: "FabricMDL2Icons";
-                                                  font-size: 16px;
                                                   font-style: normal;
                                                   font-weight: normal;
+                                                  speak: none;
+                                                }
+                                                {
+                                                  color: #605e5c;
+                                                  font-size: 16px;
                                                   height: 18px;
                                                   left: .5px;
                                                   opacity: 0;
                                                   position: absolute;
-                                                  speak: none;
                                                   text-align: center;
                                                   top: 0px;
                                                   vertical-align: middle;
@@ -4233,26 +4370,24 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         &:hover .is-row-header {
                                           color: #201f1e;
                                         }
-                                        &:hover $check {
+                                        &:hover .ms-DetailsRow-check {
                                           opacity: 1;
                                         }
-                                        .ms-Fabric--isFocusVisible &:focus $check {
+                                        .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                           opacity: 1;
                                         }
                                     data-automationid="DetailsRow"
                                     data-focuszone-id="FocusZone18"
-                                    data-is-draggable={false}
                                     data-is-focusable={true}
                                     data-item-index={4}
                                     data-selection-index={4}
-                                    draggable={false}
                                     onFocus={[Function]}
                                     onKeyDown={[Function]}
                                     onMouseDownCapture={[Function]}
                                     role="row"
                                     style={
                                       Object {
-                                        "minWidth": 0,
+                                        "minWidth": 200,
                                       }
                                     }
                                   >
@@ -4307,8 +4442,10 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     >
                                       <div
                                         aria-checked={false}
+                                        aria-label="Row checkbox"
                                         className=
                                             ms-DetailsRow-check
+                                            ms-Check-checkHost
 
                                             {
                                               -moz-osx-font-smoothing: grayscale;
@@ -4353,10 +4490,6 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                               top: 1px;
                                               z-index: 1;
                                             }
-                                            &:hover {
-                                              opacity: 1;
-                                            }
-
                                         data-automationid="DetailsRowCheck"
                                         data-selection-toggle={true}
                                         role="checkbox"
@@ -4388,27 +4521,41 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                                 right: 1px;
                                                 top: 1px;
                                               }
-                                              $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                              .ms-Check-checkHost:hover & {
+                                                opacity: 1;
+                                              }
+                                              .ms-Check-checkHost:focus & {
+                                                opacity: 1;
+                                              }
+                                              &:hover {
+                                                opacity: 1;
+                                              }
+                                              &:focus {
                                                 opacity: 1;
                                               }
                                         >
                                           <i
                                             aria-hidden={true}
                                             className=
+                                                ms-Icon
                                                 ms-Check-circle
+                                                {
+                                                  display: inline-block;
+                                                }
                                                 {
                                                   -moz-osx-font-smoothing: grayscale;
                                                   -webkit-font-smoothing: antialiased;
-                                                  color: #605e5c;
-                                                  display: inline-block;
                                                   font-family: "FabricMDL2Icons";
-                                                  font-size: 18px;
                                                   font-style: normal;
                                                   font-weight: normal;
+                                                  speak: none;
+                                                }
+                                                {
+                                                  color: #605e5c;
+                                                  font-size: 18px;
                                                   height: 18px;
                                                   left: 0px;
                                                   position: absolute;
-                                                  speak: none;
                                                   text-align: center;
                                                   top: 0px;
                                                   vertical-align: middle;
@@ -4425,21 +4572,26 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                           <i
                                             aria-hidden={true}
                                             className=
+                                                ms-Icon
                                                 ms-Check-check
+                                                {
+                                                  display: inline-block;
+                                                }
                                                 {
                                                   -moz-osx-font-smoothing: grayscale;
                                                   -webkit-font-smoothing: antialiased;
-                                                  color: #605e5c;
-                                                  display: inline-block;
                                                   font-family: "FabricMDL2Icons";
-                                                  font-size: 16px;
                                                   font-style: normal;
                                                   font-weight: normal;
+                                                  speak: none;
+                                                }
+                                                {
+                                                  color: #605e5c;
+                                                  font-size: 16px;
                                                   height: 18px;
                                                   left: .5px;
                                                   opacity: 0;
                                                   position: absolute;
-                                                  speak: none;
                                                   text-align: center;
                                                   top: 0px;
                                                   vertical-align: middle;

@@ -26,9 +26,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
         }
   >
     <div
-      aria-expanded={false}
       aria-haspopup="true"
-      role="combobox"
     >
       <div
         className=
@@ -95,6 +93,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                 }
           >
             <input
+              aria-expanded={false}
               aria-invalid={false}
               aria-label="Select a date"
               className=
@@ -125,7 +124,13 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                     text-overflow: ellipsis;
                     width: 100%;
                   }
-                  &:active, &:focus, &:hover {
+                  &:active {
+                    outline: 0px;
+                  }
+                  &:focus {
+                    outline: 0px;
+                  }
+                  &:hover {
                     outline: 0px;
                   }
                   &::-ms-clear {
@@ -149,6 +154,15 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                     font-weight: 400;
                     opacity: 1;
                   }
+                  &::-ms-input-placeholder {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #605e5c;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    opacity: 1;
+                  }
               id="DatePicker0-label"
               onBlur={[Function]}
               onChange={[Function]}
@@ -159,6 +173,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
               placeholder="Select a date..."
               readOnly={true}
               required={false}
+              role="combobox"
               type="text"
               value=""
             />
@@ -186,7 +201,6 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                   }
               data-icon-name="Calendar"
               onClick={[Function]}
-              role="presentation"
             >
               
             </i>
@@ -317,9 +331,6 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
           &:active .ms-Dropdown-title--hasError {
             border-color: #a4262c;
           }
-          &:focus .ms-Dropdown-title--hasError {
-            border-color: #a4262c;
-          }
       data-is-focusable={true}
       id="Dropdown5"
       onBlur={[Function]}
@@ -333,8 +344,9 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
     >
       <span
         aria-atomic={true}
+        aria-invalid={false}
         aria-label="Monday"
-        aria-live="off"
+        aria-live="polite"
         aria-posinset={2}
         aria-selected={true}
         aria-setsize={7}
@@ -401,7 +413,6 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                 speak: none;
               }
           data-icon-name="ChevronDown"
-          role="presentation"
         >
           
         </i>

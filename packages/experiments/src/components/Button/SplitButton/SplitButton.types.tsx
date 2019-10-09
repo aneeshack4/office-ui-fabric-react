@@ -1,8 +1,10 @@
-import { IStackSlot } from 'office-ui-fabric-react';
-import { IComponent, IComponentStyles, IHTMLSlot, ISlotProp, ISlottableProps, IStyleableComponentProps } from '../../../Foundation';
+// Temporary import file to experiment with next version of foundation.
+import { IComponent } from '@uifabric/foundation/lib/next/IComponent';
+import { IComponentStyles, IHTMLSlot, ISlotProp, ISlottableProps, IStyleableComponentProps } from '../../../Foundation';
 import { IBaseProps } from '../../../Utilities';
 import { INativeButtonProps } from '../Button.types';
 import {
+  IMenuButton,
   IMenuButtonProps,
   IMenuButtonSlot,
   IMenuButtonSlots,
@@ -13,7 +15,13 @@ import {
 /**
  * {@docCategory Button}
  */
-export type ISplitButtonComponent = IComponent<ISplitButtonProps, ISplitButtonTokens, ISplitButtonStyles, ISplitButtonViewProps>;
+export type ISplitButtonComponent = IComponent<
+  ISplitButtonProps,
+  ISplitButtonTokens,
+  ISplitButtonStyles,
+  ISplitButtonViewProps,
+  ISplitButtonSlots
+>;
 
 // These types are redundant with IButtonComponent but are needed until TS function return widening issue is resolved:
 // https://github.com/Microsoft/TypeScript/issues/241
@@ -40,7 +48,7 @@ export interface ISplitButtonSlots extends IMenuButtonSlots {
   /**
    * Defines the root slot of the component.
    */
-  root?: IStackSlot;
+  root?: IHTMLSlot;
 
   /**
    * Menu button that is going to be rendered.
@@ -50,7 +58,7 @@ export interface ISplitButtonSlots extends IMenuButtonSlots {
   /**
    * Defines the container for the divider that is used for styling purposes.
    */
-  splitDividerContainer?: IStackSlot;
+  splitDividerContainer?: IHTMLSlot;
 
   /**
    * Defines the divider that separates the left and right parts of a SplitButton.
@@ -61,12 +69,7 @@ export interface ISplitButtonSlots extends IMenuButtonSlots {
 /**
  * {@docCategory Button}
  */
-export interface ISplitButton {
-  /**
-   * Sets focus to the first focus stop of the SplitButton.
-   */
-  focus: () => void;
-}
+export interface ISplitButton extends IMenuButton {}
 
 /**
  * {@docCategory Button}
@@ -84,6 +87,7 @@ export interface ISplitButtonProps
       | 'allowDisabledFocus'
       | 'ariaLabel'
       | 'keytipProps'
+      | 'uniqueId'
       | 'defaultExpanded'
       | 'expanded'
       | 'onMenuDismiss'
@@ -121,6 +125,11 @@ export interface ISplitButtonTokens extends IMenuButtonTokens {
    * Defines the color of the SplitButton divider.
    */
   dividerColor?: string;
+
+  /**
+   * Defines the color of the SplitButton divider when in high contrast mode.
+   */
+  highContrastDividerColor?: string;
 
   /**
    * Defines the padding of the menu section of the SplitButton.

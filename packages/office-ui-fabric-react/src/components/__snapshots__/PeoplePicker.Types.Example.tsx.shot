@@ -20,7 +20,6 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
     >
       <div
         className="ms-SelectionZone"
@@ -64,6 +63,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
                 ms-BasePicker-input
                 {
                   align-self: flex-end;
+                  background-color: transparent;
                   border-radius: 2px;
                   border: none;
                   flex-grow: 1;
@@ -81,6 +81,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
             onClick={[Function]}
             onCompositionEnd={[Function]}
             onCompositionStart={[Function]}
+            onCompositionUpdate={[Function]}
             onFocus={[Function]}
             onInput={[Function]}
             onKeyDown={[Function]}
@@ -221,9 +222,6 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
             &:active .ms-Dropdown-title--hasError {
               border-color: #a4262c;
             }
-            &:focus .ms-Dropdown-title--hasError {
-              border-color: #a4262c;
-            }
         data-is-focusable={true}
         id="Dropdown2"
         onBlur={[Function]}
@@ -237,8 +235,9 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
       >
         <span
           aria-atomic={true}
+          aria-invalid={false}
           aria-label="Normal"
-          aria-live="off"
+          aria-live="polite"
           aria-posinset={1}
           aria-selected={true}
           aria-setsize={7}
@@ -305,7 +304,6 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
                   speak: none;
                 }
             data-icon-name="ChevronDown"
-            role="presentation"
           >
             
           </i>
@@ -345,6 +343,8 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
           }
     >
       <input
+        aria-checked="false"
+        aria-label="Disable People Picker"
         checked={false}
         className=
 
@@ -407,6 +407,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
                 justify-content: center;
                 margin-right: 4px;
                 overflow: hidden;
+                position: relative;
                 transition-duration: 200ms;
                 transition-property: background, border, border-color;
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -433,12 +434,12 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
                   color: Window;
                 }
             data-icon-name="CheckMark"
-            role="presentation"
           >
             
           </i>
         </div>
         <span
+          aria-hidden="true"
           className=
               ms-Checkbox-text
               {
@@ -613,12 +614,12 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border-color: #ffffff;
-          border: 1px solid transparent;
+          border: none;
           bottom: 2px;
           content: "";
           left: 2px;
-          outline: none;
+          outline-color: #ffffff;
+          outline: 1px solid #605e5c;
           position: absolute;
           right: 2px;
           top: 2px;
@@ -668,7 +669,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
     onMouseUp={[Function]}
     type="button"
   >
-    <div
+    <span
       className=
           ms-Button-flexContainer
           {
@@ -678,18 +679,21 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
             height: 100%;
             justify-content: center;
           }
+      data-automationid="splitbuttonprimary"
     >
-      <div
+      <span
         className=
             ms-Button-textContainer
             {
+              display: block;
               flex-grow: 1;
             }
       >
-        <div
+        <span
           className=
               ms-Button-label
               {
+                display: block;
                 font-weight: 600;
                 line-height: 100%;
                 margin-bottom: 0;
@@ -700,9 +704,9 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
           id="id__5"
         >
           Set focus
-        </div>
-      </div>
-    </div>
+        </span>
+      </span>
+    </span>
   </button>
 </div>
 `;
